@@ -44,7 +44,7 @@ let signature = sign({
 See [examples/verify.ts](examples/verify.ts).
 
 ```ts
-import { parsePrivateKey, parseSignature, sign } from "node-signify";
+import { parsePrivateKey, parseSignature, verify } from "node-signify";
 
 let verified = verify({
   signature: parseSignature(SIGNATURE)!.content,
