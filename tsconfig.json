@@ -9,7 +9,8 @@
     "outDir": "./dist",
     "paths": {
       "bcrypt-pbkdf": ["./src/types/bcrypt-pbkdf.d.ts"]
-    }
+    },
+    "declaration": true
   },
   "exclude": ["node_modules", "**/*.spec.ts", "examples"]
 }
