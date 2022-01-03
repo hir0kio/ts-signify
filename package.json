@@ -6,7 +6,7 @@
   "scripts": {
     "build": "bash scripts/build.sh",
     "commit": "cz",
-    "postinstall": "bash scripts/build.sh",
+    "prepublishOnly": "bash scripts/build.sh",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
