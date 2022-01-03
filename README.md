@@ -15,12 +15,12 @@ $ npm install node-signify
 
 ### Generate a key pair
 
-See [examples/generate.ts](examples/generate.ts).
+See [examples/generate-key-pair.ts](examples/generate-key-pair.ts).
 
 ```ts
-import { generate } from "node-signify";
+import { generateKeyPair } from "node-signify";
 
-let keyPair = generate({
+let keyPair = generateKeyPair({
   passphrase: "passphrase",
 });
 ```

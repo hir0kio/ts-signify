@@ -1,6 +1,6 @@
 export * from "./check";
 export * from "./decrypt";
-export * from "./generate";
+export * from "./generate-key-pair";
 export * from "./interfaces";
 export * from "./parse";
 export * from "./sign";

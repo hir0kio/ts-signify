@@ -11,7 +11,7 @@ export interface GenerationOptions {
   passphrase?: string;
 }
 
-export function generate(options?: GenerationOptions): KeyPair {
+export function generateKeyPair(options?: GenerationOptions): KeyPair {
   options = options ?? {};
 
   let keyNumber = randomBytes(8),

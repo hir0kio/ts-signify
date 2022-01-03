@@ -1,8 +1,8 @@
-import { checkKeyPair, generate } from ".";
+import { checkKeyPair, generateKeyPair } from ".";
 
-describe("generate()", () => {
-  it("returns valid KeyPair object", async () => {
-    let keyPair = await generate();
+describe("generateKeyPair()", () => {
+  it("returns valid KeyPair object", () => {
+    let keyPair = generateKeyPair();
 
     expect(checkKeyPair(keyPair)).toBe(true);
     expect(keyPair.privateKey.comment).toBe("signify private key");
