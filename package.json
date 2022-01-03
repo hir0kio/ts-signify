@@ -2,7 +2,7 @@
   "name": "node-signify",
   "version": "0.2.0",
   "description": "Node.js port of OpenBSD's signify(1)",
-  "main": "dist/src",
+  "main": "dist",
   "scripts": {
     "build": "bash scripts/build.sh",
     "commit": "cz",
