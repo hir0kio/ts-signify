@@ -7,11 +7,11 @@ const algorithm = "Ed",
   kdfAlgorithm = "BK",
   kdfRounds = 42;
 
-export interface GenerateOptions {
+export interface GenerationOptions {
   passphrase?: string;
 }
 
-export function generate(options?: GenerateOptions): KeyPair {
+export function generate(options?: GenerationOptions): KeyPair {
   options = options ?? {};
 
   let keyNumber = randomBytes(8),

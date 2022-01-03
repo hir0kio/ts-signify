@@ -1,14 +1,14 @@
 import { Sign } from "ed25519";
 import { PrivateKey, Signature, _decryptPrivateKey } from ".";
 
-export interface SignOptions {
+export interface SigningOptions {
   privateKey: PrivateKey;
   passphrase: string;
   message: Buffer | string;
   comment: Buffer | string;
 }
 
-export function sign(options: SignOptions): Signature | null {
+export function sign(options: SigningOptions): Signature | null {
   return {
     comment: options.comment.toString(),
     algorithm: "Ed",
