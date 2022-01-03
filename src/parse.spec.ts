@@ -1,5 +1,4 @@
 import {
-  parseContainer,
   parsePublicKey,
   checkPublicKey,
   parsePrivateKey,
@@ -7,26 +6,6 @@ import {
   parseSignature,
   checkSignature,
 } from ".";
-
-describe("parseContainer()", () => {
-  it("returns valid Container<string> object", () => {
-    let container = parseContainer(
-      "untrusted comment: [mock comment]" + "\n" + "W21vY2sgY29udGVudF0K" + "\n"
-    );
-
-    expect(container).toBeTruthy();
-    expect(container!.comment).toBe("[mock comment]");
-    expect(Buffer.from(container!.content, "base64").toString()).toBe(
-      "[mock content]" + "\n"
-    );
-  });
-
-  it("returns null if malformed input is given", () => {
-    let container = parseContainer("[malformed input]" + "\n");
-
-    expect(container).toBeNull();
-  });
-});
 
 describe("parsePublicKey()", () => {
   it("returns valid Container<PublicKey> object", () => {
@@ -38,7 +17,7 @@ describe("parsePublicKey()", () => {
     );
 
     expect(publicKey).toBeTruthy();
-    expect(checkPublicKey(publicKey?.content!)).toBe(true);
+    expect(checkPublicKey(publicKey)).toBe(true);
   });
 
   it("returns null if malformed input is given", () => {
@@ -58,7 +37,7 @@ describe("parsePrivateKey()", () => {
     );
 
     expect(privateKey).toBeTruthy();
-    expect(checkPrivateKey(privateKey?.content!)).toBe(true);
+    expect(checkPrivateKey(privateKey)).toBe(true);
   });
 
   it("returns null if malformed input is given", () => {
@@ -78,7 +57,7 @@ describe("parseSignature()", () => {
     );
 
     expect(signature).toBeTruthy();
-    expect(checkSignature(signature?.content!)).toBe(true);
+    expect(checkSignature(signature)).toBe(true);
   });
 
   it("returns null if malformed input is given", () => {

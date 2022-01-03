@@ -1,19 +1,19 @@
-import { Container, PrivateKey, PublicKey, Signature, _num2buf } from ".";
+import { PrivateKey, PublicKey, Signature, _num2buf } from ".";
 
-export function stringifyContainer<T>(
-  container: Container<T>,
+function _stringifyContainer<T extends PrivateKey | PublicKey | Signature>(
+  container: T,
   stringifyContent: (content: T) => string
 ) {
   return (
     `untrusted comment: ${container.comment}` +
     "\n" +
-    stringifyContent(container.content) +
+    stringifyContent(container) +
     "\n"
   );
 }
 
-export function stringifyPublicKey(input: Container<PublicKey>) {
-  return stringifyContainer<PublicKey>(input, (publicKey) =>
+export function stringifyPublicKey(input: PublicKey) {
+  return _stringifyContainer<PublicKey>(input, (publicKey) =>
     Buffer.concat([
       Buffer.from(publicKey.algorithm),
       publicKey.keyNumber,
@@ -22,8 +22,8 @@ export function stringifyPublicKey(input: Container<PublicKey>) {
   );
 }
 
-export function stringifyPrivateKey(input: Container<PrivateKey>) {
-  return stringifyContainer<PrivateKey>(input, (privateKey) =>
+export function stringifyPrivateKey(input: PrivateKey) {
+  return _stringifyContainer<PrivateKey>(input, (privateKey) =>
     Buffer.concat([
       Buffer.from(privateKey.algorithm),
       Buffer.from(privateKey.kdfAlgorithm),
@@ -36,8 +36,8 @@ export function stringifyPrivateKey(input: Container<PrivateKey>) {
   );
 }
 
-export function stringifySignature(input: Container<Signature>) {
-  return stringifyContainer<Signature>(input, (signature) =>
+export function stringifySignature(input: Signature) {
+  return _stringifyContainer<Signature>(input, (signature) =>
     Buffer.concat([
       Buffer.from(signature.algorithm),
       signature.keyNumber,

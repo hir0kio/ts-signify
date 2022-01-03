@@ -7,7 +7,7 @@ import {
   _UnencryptedPrivateKey,
 } from ".";
 
-export function checkKeyPair(keyPair: KeyPair) {
+export function checkKeyPair(keyPair: KeyPair | null) {
   return (
     keyPair &&
     checkPrivateKey(keyPair.privateKey) &&
@@ -19,7 +19,7 @@ export function checkKeyPair(keyPair: KeyPair) {
   );
 }
 
-export function checkPrivateKey(privateKey: PrivateKey) {
+export function checkPrivateKey(privateKey: PrivateKey | null) {
   return (
     privateKey &&
     privateKey.algorithm.length === 2 &&
@@ -31,7 +31,7 @@ export function checkPrivateKey(privateKey: PrivateKey) {
   );
 }
 
-export function checkPublicKey(publicKey: PublicKey) {
+export function checkPublicKey(publicKey: PublicKey | null) {
   return (
     publicKey &&
     publicKey.algorithm.length === 2 &&
@@ -40,7 +40,7 @@ export function checkPublicKey(publicKey: PublicKey) {
   );
 }
 
-export function checkSignature(signature: Signature) {
+export function checkSignature(signature: Signature | null) {
   return (
     signature &&
     signature.algorithm.length === 2 &&

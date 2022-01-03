@@ -11,8 +11,8 @@ export interface _DecryptPrivateKeyOptions {
 export function _decryptPrivateKey(
   options: _DecryptPrivateKeyOptions
 ): _UnencryptedPrivateKey | null {
-  assert(Buffer.from(options.privateKey.algorithm).toString() === "Ed");
-  assert(Buffer.from(options.privateKey.kdfAlgorithm).toString() === "BK");
+  assert(options.privateKey.algorithm === "Ed");
+  assert(options.privateKey.kdfAlgorithm === "BK");
 
   let derivedKey = Buffer.alloc(64);
 

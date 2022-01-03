@@ -33,7 +33,7 @@ See [examples/sign.ts](examples/sign.ts).
 import { parsePrivateKey, sign } from "node-signify";
 
 let signature = sign({
-  privateKey: parsePrivateKey(PRIVATE_KEY)!.content,
+  privateKey: parsePrivateKey(PRIVATE_KEY)!,
   message: "[mock message]" + "\n",
   passphrase: "passphrase",
 });
@@ -47,9 +47,9 @@ See [examples/verify.ts](examples/verify.ts).
 import { parsePrivateKey, parseSignature, verify } from "node-signify";
 
 let verified = verify({
-  signature: parseSignature(SIGNATURE)!.content,
+  signature: parseSignature(SIGNATURE)!,
   message: "[mock message]" + "\n",
-  publicKey: parsePublicKey(PUBLIC_KEY)!.content,
+  publicKey: parsePublicKey(PUBLIC_KEY)!,
 });
 ```
 

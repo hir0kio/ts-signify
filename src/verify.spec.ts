@@ -1,7 +1,7 @@
 import { parsePublicKey, parseSignature, verify } from ".";
 
-const mockMessage = Buffer.from("[mock message]" + "\n");
-const mockInvalidMessage = Buffer.from("[mock invalid message]" + "\n");
+const mockMessage = "[mock message]" + "\n";
+const mockInvalidMessage = "[mock invalid message]" + "\n";
 const mockPublicKey = parsePublicKey(
   "untrusted comment: signify public key" +
     "\n" +
@@ -19,8 +19,8 @@ describe("verify()", () => {
   it("returns true if valid message and Signature objects are given", () => {
     expect(
       verify({
-        publicKey: mockPublicKey!.content,
-        signature: mockSignature!.content,
+        publicKey: mockPublicKey!,
+        signature: mockSignature!,
         message: mockMessage,
       })
     ).toBe(true);
@@ -29,8 +29,8 @@ describe("verify()", () => {
   it("returns false if invalid message or Signature object is given", () => {
     expect(
       verify({
-        publicKey: mockPublicKey!.content,
-        signature: mockSignature!.content,
+        publicKey: mockPublicKey!,
+        signature: mockSignature!,
         message: mockInvalidMessage,
       })
     ).toBe(false);

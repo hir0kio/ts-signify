@@ -30,20 +30,22 @@ const mockSignature = parseSignature(
 describe("sign()", () => {
   it("returns valid Signature object", async () => {
     let signature = sign({
-      privateKey: mockPrivateKey!.content,
+      privateKey: mockPrivateKey!,
       message: mockMessage,
       passphrase: mockPassphrase,
+      comment: "verify with mock-key.pub",
     });
 
     expect(signature).toBeTruthy();
-    expect(signature?.algorithm).toEqual(mockSignature?.content.algorithm);
-    expect(signature?.keyNumber).toEqual(mockSignature?.content.keyNumber);
-    expect(signature?.content).toEqual(mockSignature?.content.content);
+    expect(signature?.comment).toBe("verify with mock-key.pub");
+    expect(signature?.algorithm).toEqual(mockSignature?.algorithm);
+    expect(signature?.keyNumber).toEqual(mockSignature?.keyNumber);
+    expect(signature?.content).toEqual(mockSignature?.content);
 
     expect(
       verify({
         signature: signature!,
-        publicKey: mockPublicKey!.content,
+        publicKey: mockPublicKey!,
         message: mockMessage,
       })
     ).toBe(true);

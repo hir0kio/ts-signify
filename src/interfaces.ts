@@ -1,14 +1,10 @@
-export interface Container<T> {
-  comment: string;
-  content: T;
-}
-
 export interface KeyPair {
   publicKey: PublicKey;
   privateKey: PrivateKey;
 }
 
 export interface PrivateKey {
+  comment: string;
   algorithm: string;
   kdfAlgorithm: string;
   kdfRounds: number;
@@ -19,12 +15,14 @@ export interface PrivateKey {
 }
 
 export interface PublicKey {
+  comment: string;
   algorithm: string;
   keyNumber: Buffer;
   content: Buffer;
 }
 
 export interface Signature {
+  comment: string;
   algorithm: string;
   keyNumber: Buffer;
   content: Buffer;

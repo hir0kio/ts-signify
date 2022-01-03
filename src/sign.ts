@@ -5,10 +5,12 @@ export interface SignOptions {
   privateKey: PrivateKey;
   passphrase: string;
   message: Buffer | string;
+  comment: Buffer | string;
 }
 
 export function sign(options: SignOptions): Signature | null {
   return {
+    comment: options.comment.toString(),
     algorithm: "Ed",
     keyNumber: options.privateKey.keyNumber,
     content: Sign(

@@ -9,13 +9,13 @@ import { parsePublicKey, parseSignature, verify } from "../src";
       await promisify(readFile)(
         resolve(process.cwd(), "mocks", "mock-message.sig")
       )
-    )!.content,
+    )!,
     message: await promisify(readFile)(
       resolve(process.cwd(), "mocks", "mock-message")
     ),
     publicKey: parsePublicKey(
       await promisify(readFile)(resolve(process.cwd(), "mocks", "mock-key.pub"))
-    )!.content,
+    )!,
   });
 
   console.log(

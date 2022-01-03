@@ -33,6 +33,7 @@ export function generate(options?: GenerateOptions): KeyPair {
 
   return {
     privateKey: {
+      comment: "signify private key",
       algorithm,
       kdfAlgorithm,
       kdfRounds: kdfRounds,
@@ -49,6 +50,7 @@ export function generate(options?: GenerateOptions): KeyPair {
       ),
     },
     publicKey: {
+      comment: "signify public key",
       algorithm,
       keyNumber,
       content: keyPair.publicKey,
