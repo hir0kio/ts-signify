@@ -1,6 +1,6 @@
 {
   "name": "node-signify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Node.js port of OpenBSD's signify(1)",
   "main": "dist",
   "scripts": {
