@@ -36,6 +36,7 @@ let signature = sign({
   privateKey: parsePrivateKey(PRIVATE_KEY)!,
   message: "[mock message]" + "\n",
   passphrase: "passphrase",
+  comment: "verify with mock-key.pub",
 });
 ```
 
