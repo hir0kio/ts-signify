@@ -10,5 +10,6 @@
     "paths": {
       "bcrypt-pbkdf": ["./src/types/bcrypt-pbkdf.d.ts"]
     }
-  }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "examples"]
 }
