@@ -18,7 +18,7 @@
   "keywords": [
     "openbsd"
   ],
-  "author": "Hiroki Okada",
+  "author": "Hiroki Okada <hirokio@tutanota.com> (https://github.com/okada-h)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/okada-h/node-signify/issues"
