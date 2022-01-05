@@ -1,15 +1,15 @@
 import { pbkdf } from "bcrypt-pbkdf";
 import { assert } from "console";
 import { createHash } from "crypto";
-import { PrivateKey, _buf2num } from ".";
+import { PrivateKey } from "./interfaces";
 
-export interface _DecryptPrivateKeyOptions {
+export interface DecryptPrivateKeyOptions {
   privateKey: PrivateKey;
   passphrase?: string;
 }
 
-export function _decryptPrivateKey(
-  options: _DecryptPrivateKeyOptions
+export function decryptPrivateKey(
+  options: DecryptPrivateKeyOptions
 ): Buffer | null {
   assert(options.privateKey.algorithm === "Ed");
   assert(options.privateKey.kdfAlgorithm === "BK");

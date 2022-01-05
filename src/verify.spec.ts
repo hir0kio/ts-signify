@@ -1,4 +1,4 @@
-import { verify } from ".";
+import { verify } from "./verify";
 
 const mockMessage = "[mock message]" + "\n";
 const mockInvalidMessage = "[mock invalid message]" + "\n";

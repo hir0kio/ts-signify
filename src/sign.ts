@@ -1,5 +1,7 @@
 import { Sign } from "ed25519";
-import { parsePrivateKey, stringifySignature, _decryptPrivateKey } from ".";
+import { decryptPrivateKey } from "./decrypt";
+import { parsePrivateKey } from "./parse";
+import { stringifySignature } from "./stringify";
 
 export interface SigningOptions {
   privateKey: Buffer | string;
@@ -18,7 +20,7 @@ export function sign(options: SigningOptions) {
         keyNumber: privateKey.keyNumber,
         content: Sign(
           Buffer.from(options.message),
-          _decryptPrivateKey({
+          decryptPrivateKey({
             privateKey,
             passphrase: options.passphrase.toString(),
           })!

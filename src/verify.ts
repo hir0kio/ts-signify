@@ -1,5 +1,5 @@
-import { parsePublicKey, parseSignature } from ".";
 import { Verify } from "ed25519";
+import { parsePublicKey, parseSignature } from "./parse";
 
 export interface VerificationOptions {
   publicKey: Buffer | string;

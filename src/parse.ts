@@ -1,12 +1,6 @@
-import {
-  PrivateKey,
-  PublicKey,
-  Signature,
-  _buf2num,
-  checkPrivateKey,
-  checkPublicKey,
-  checkSignature,
-} from ".";
+import { checkPrivateKey, checkPublicKey, checkSignature } from "./check";
+import { PrivateKey, PublicKey, Signature } from "./interfaces";
+import { buf2num } from "./utilities";
 
 function parse<T extends PrivateKey | PublicKey | Signature>(
   input: Buffer | string,
@@ -31,7 +25,7 @@ export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
       comment,
       algorithm: content.subarray(0, 2).toString(),
       kdfAlgorithm: content.subarray(2, 4).toString(),
-      kdfRounds: _buf2num(content.subarray(4, 8)),
+      kdfRounds: buf2num(content.subarray(4, 8)),
       salt: content.subarray(8, 24),
       checksum: content.subarray(24, 32),
       keyNumber: content.subarray(32, 40),

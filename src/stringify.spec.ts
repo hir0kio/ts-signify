@@ -1,9 +1,9 @@
 import {
-  stringifyPublicKey,
   stringifyPrivateKey,
+  stringifyPublicKey,
   stringifySignature,
-  _num2buf,
-} from ".";
+} from "./stringify";
+import { num2buf } from "./utilities";
 
 describe("stringifyPrivateKey()", () => {
   it("returns string with valid format", () => {
@@ -24,7 +24,7 @@ describe("stringifyPrivateKey()", () => {
         Buffer.from(
           "Ed" +
             "BK" +
-            _num2buf(42, 4).toString() +
+            num2buf(42, 4).toString() +
             "d".repeat(16) +
             "e".repeat(8) +
             "f".repeat(8) +

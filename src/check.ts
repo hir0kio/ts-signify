@@ -1,4 +1,4 @@
-import { PrivateKey, PublicKey, Signature, _num2buf } from ".";
+import { PrivateKey, PublicKey, Signature } from "./interfaces";
 
 export function checkPrivateKey(privateKey: PrivateKey | null) {
   return (
