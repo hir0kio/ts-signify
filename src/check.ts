@@ -1,23 +1,4 @@
-import {
-  KeyPair,
-  PrivateKey,
-  PublicKey,
-  Signature,
-  _num2buf,
-  _UnencryptedPrivateKey,
-} from ".";
-
-export function checkKeyPair(keyPair: KeyPair | null) {
-  return (
-    keyPair &&
-    checkPrivateKey(keyPair.privateKey) &&
-    checkPublicKey(keyPair.publicKey) &&
-    Buffer.compare(
-      keyPair.privateKey.keyNumber,
-      keyPair.publicKey.keyNumber
-    ) === 0
-  );
-}
+import { PrivateKey, PublicKey, Signature, _num2buf } from ".";
 
 export function checkPrivateKey(privateKey: PrivateKey | null) {
   return (

@@ -1,19 +1,19 @@
 import { PrivateKey, PublicKey, Signature, _num2buf } from ".";
 
-function _stringifyContainer<T extends PrivateKey | PublicKey | Signature>(
-  container: T,
+function stringify<T extends PrivateKey | PublicKey | Signature>(
+  input: T,
   stringifyContent: (content: T) => string
 ) {
   return (
-    `untrusted comment: ${container.comment}` +
+    `untrusted comment: ${input.comment}` +
     "\n" +
-    stringifyContent(container) +
+    stringifyContent(input) +
     "\n"
   );
 }
 
 export function stringifyPublicKey(input: PublicKey) {
-  return _stringifyContainer<PublicKey>(input, (publicKey) =>
+  return stringify<PublicKey>(input, (publicKey) =>
     Buffer.concat([
       Buffer.from(publicKey.algorithm),
       publicKey.keyNumber,
@@ -23,7 +23,7 @@ export function stringifyPublicKey(input: PublicKey) {
 }
 
 export function stringifyPrivateKey(input: PrivateKey) {
-  return _stringifyContainer<PrivateKey>(input, (privateKey) =>
+  return stringify<PrivateKey>(input, (privateKey) =>
     Buffer.concat([
       Buffer.from(privateKey.algorithm),
       Buffer.from(privateKey.kdfAlgorithm),
@@ -37,7 +37,7 @@ export function stringifyPrivateKey(input: PrivateKey) {
 }
 
 export function stringifySignature(input: Signature) {
-  return _stringifyContainer<Signature>(input, (signature) =>
+  return stringify<Signature>(input, (signature) =>
     Buffer.concat([
       Buffer.from(signature.algorithm),
       signature.keyNumber,

@@ -1,21 +1,19 @@
 import { readFile } from "fs";
 import { resolve } from "path";
 import { promisify } from "util";
-import { parsePublicKey, parseSignature, verify } from "../src";
+import { verify } from "../src";
 
 (async () => {
   let verified = verify({
-    signature: parseSignature(
-      await promisify(readFile)(
-        resolve(process.cwd(), "mocks", "mock-message.sig")
-      )
-    )!,
+    signature: await promisify(readFile)(
+      resolve(process.cwd(), "mocks", "mock-message.sig")
+    ),
     message: await promisify(readFile)(
       resolve(process.cwd(), "mocks", "mock-message")
     ),
-    publicKey: parsePublicKey(
-      await promisify(readFile)(resolve(process.cwd(), "mocks", "mock-key.pub"))
-    )!,
+    publicKey: await promisify(readFile)(
+      resolve(process.cwd(), "mocks", "mock-key.pub")
+    ),
   });
 
   console.log(

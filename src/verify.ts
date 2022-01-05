@@ -1,16 +1,19 @@
-import { PublicKey, Signature } from ".";
+import { parsePublicKey, parseSignature } from ".";
 import { Verify } from "ed25519";
 
 export interface VerificationOptions {
-  publicKey: PublicKey;
-  signature: Signature;
+  publicKey: Buffer | string;
+  signature: Buffer | string;
   message: Buffer | string;
 }
 
 export function verify(options: VerificationOptions) {
+  let publicKey = parsePublicKey(options.publicKey),
+    signature = parseSignature(options.signature);
+
   return Verify(
     Buffer.from(options.message),
-    options.signature.content,
-    options.publicKey.content
+    signature!.content,
+    publicKey!.content
   );
 }

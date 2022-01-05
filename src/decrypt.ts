@@ -1,7 +1,7 @@
 import { pbkdf } from "bcrypt-pbkdf";
 import { assert } from "console";
 import { createHash } from "crypto";
-import { PrivateKey, _buf2num, _UnencryptedPrivateKey } from ".";
+import { PrivateKey, _buf2num } from ".";
 
 export interface _DecryptPrivateKeyOptions {
   privateKey: PrivateKey;
@@ -10,7 +10,7 @@ export interface _DecryptPrivateKeyOptions {
 
 export function _decryptPrivateKey(
   options: _DecryptPrivateKeyOptions
-): _UnencryptedPrivateKey | null {
+): Buffer | null {
   assert(options.privateKey.algorithm === "Ed");
   assert(options.privateKey.kdfAlgorithm === "BK");
 
@@ -43,8 +43,5 @@ export function _decryptPrivateKey(
     return null; // incorrect passphrase
   }
 
-  return {
-    ...options.privateKey,
-    unencryptedContent: decryptedKey,
-  };
+  return decryptedKey;
 }

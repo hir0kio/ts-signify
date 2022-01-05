@@ -1,16 +1,13 @@
-import { parsePrivateKey, sign } from "../src";
+import { sign } from "../src";
 
 let signature = sign({
-  privateKey: parsePrivateKey(
+  privateKey:
     "untrusted comment: signify secret key" +
-      "\n" +
-      "RWRCSwAAACqJ7f6/CH4FzXB6RaJukrsz" +
-      "I6KSOAMlKOpYneRdupGjVdodIBB5HFJ+" +
-      "3oAby9p+8olmK90Ltjyb7VTgvwU7eCqd" +
-      "CqYGBizi4EqGY3uj5n723F4bYhYcAjSx" +
-      "yy7KLRVbwLE=" +
-      "\n"
-  )!,
+    "\n" +
+    "RWRCSwAAACqJ7f6/CH4FzXB6RaJukrszI6KSOAMlKOpYneRdupGjVdodIBB5HFJ+" +
+    "3oAby9p+8olmK90Ltjyb7VTgvwU7eCqdCqYGBizi4EqGY3uj5n723F4bYhYcAjSx" +
+    "yy7KLRVbwLE=" +
+    "\n",
   message: "[mock message]" + "\n",
   passphrase: "passphrase",
   comment: "verify with mock-key.pub",

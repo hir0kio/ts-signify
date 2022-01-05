@@ -1,7 +1,7 @@
 import { pbkdf } from "bcrypt-pbkdf";
 import { randomBytes, createHash } from "crypto";
 import { MakeKeypair } from "ed25519";
-import { KeyPair, _num2buf } from ".";
+import { KeyPair, stringifyPrivateKey, stringifyPublicKey, _num2buf } from ".";
 
 const algorithm = "Ed",
   kdfAlgorithm = "BK",
@@ -32,7 +32,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
   }
 
   return {
-    privateKey: {
+    privateKey: stringifyPrivateKey({
       comment: "signify private key",
       algorithm,
       kdfAlgorithm,
@@ -48,12 +48,12 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
           (value, index) => derivedPrivateKey[index] ^ keyPair.privateKey[index]
         )
       ),
-    },
-    publicKey: {
+    }),
+    publicKey: stringifyPublicKey({
       comment: "signify public key",
       algorithm,
       keyNumber,
       content: keyPair.publicKey,
-    },
+    }),
   };
 }

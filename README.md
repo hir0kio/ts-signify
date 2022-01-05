@@ -30,10 +30,10 @@ let keyPair = generateKeyPair({
 See [examples/sign.ts](examples/sign.ts).
 
 ```ts
-import { parsePrivateKey, sign } from "node-signify";
+import { sign } from "node-signify";
 
 let signature = sign({
-  privateKey: parsePrivateKey(PRIVATE_KEY)!,
+  privateKey: PRIVATE_KEY,
   message: "[mock message]" + "\n",
   passphrase: "passphrase",
   comment: "verify with mock-key.pub",
@@ -45,12 +45,12 @@ let signature = sign({
 See [examples/verify.ts](examples/verify.ts).
 
 ```ts
-import { parsePrivateKey, parseSignature, verify } from "node-signify";
+import { verify } from "node-signify";
 
 let verified = verify({
-  signature: parseSignature(SIGNATURE)!,
+  signature: SIGNATURE,
   message: "[mock message]" + "\n",
-  publicKey: parsePublicKey(PUBLIC_KEY)!,
+  publicKey: PUBLIC_KEY,
 });
 ```
 

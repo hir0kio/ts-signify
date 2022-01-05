@@ -1,14 +1,14 @@
 import {
-  PublicKey,
   PrivateKey,
+  PublicKey,
   Signature,
+  _buf2num,
   checkPrivateKey,
   checkPublicKey,
   checkSignature,
-  _buf2num,
 } from ".";
 
-function _parseContainer<T extends PrivateKey | PublicKey | Signature>(
+function parse<T extends PrivateKey | PublicKey | Signature>(
   input: Buffer | string,
   parseContent: (comment: string, content: Buffer) => T | null
 ): T | null {
@@ -26,7 +26,7 @@ function _parseContainer<T extends PrivateKey | PublicKey | Signature>(
 }
 
 export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
-  return _parseContainer<PrivateKey>(input, (comment, content) => {
+  return parse<PrivateKey>(input, (comment, content) => {
     let privateKey = {
       comment,
       algorithm: content.subarray(0, 2).toString(),
@@ -43,7 +43,7 @@ export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
 }
 
 export function parsePublicKey(input: Buffer | string): PublicKey | null {
-  return _parseContainer(input, (comment, content) => {
+  return parse(input, (comment, content) => {
     let publicKey = {
       comment,
       algorithm: content.subarray(0, 2).toString(),
@@ -56,7 +56,7 @@ export function parsePublicKey(input: Buffer | string): PublicKey | null {
 }
 
 export function parseSignature(input: Buffer | string): Signature | null {
-  return _parseContainer(input, (comment, content) => {
+  return parse(input, (comment, content) => {
     let signature = {
       comment,
       algorithm: content.subarray(0, 2).toString(),

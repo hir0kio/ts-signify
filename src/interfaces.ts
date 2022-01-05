@@ -1,6 +1,6 @@
 export interface KeyPair {
-  publicKey: PublicKey;
-  privateKey: PrivateKey;
+  publicKey: Buffer | string;
+  privateKey: Buffer | string;
 }
 
 export interface PrivateKey {
@@ -26,8 +26,4 @@ export interface Signature {
   algorithm: string;
   keyNumber: Buffer;
   content: Buffer;
-}
-
-export interface _UnencryptedPrivateKey extends PrivateKey {
-  unencryptedContent: Buffer;
 }
