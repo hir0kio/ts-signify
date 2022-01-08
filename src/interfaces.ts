@@ -10,20 +10,20 @@ export interface PrivateKey {
   kdfRounds: number;
   salt: Buffer;
   checksum: Buffer;
-  keyNumber: Buffer;
+  id: Buffer;
   content: Buffer;
 }
 
 export interface PublicKey {
   comment: string;
   algorithm: string;
-  keyNumber: Buffer;
+  id: Buffer;
   content: Buffer;
 }
 
 export interface Signature {
   comment: string;
   algorithm: string;
-  keyNumber: Buffer;
+  id: Buffer;
   content: Buffer;
 }

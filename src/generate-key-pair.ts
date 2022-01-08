@@ -15,7 +15,7 @@ export interface KeyPairGenerationOptions {
 export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
   options = options ?? {};
 
-  let keyNumber = randomBytes(8),
+  let id = randomBytes(8),
     keyPair = MakeKeypair(randomBytes(32)),
     salt = randomBytes(16),
     derivedPrivateKey = Buffer.alloc(64);
@@ -43,7 +43,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
         .update(keyPair.privateKey)
         .digest()
         .subarray(0, 8),
-      keyNumber,
+      id,
       content: Buffer.from(
         Buffer.alloc(64).map(
           (value, index) => derivedPrivateKey[index] ^ keyPair.privateKey[index]
@@ -53,7 +53,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
     publicKey: stringifyPublicKey({
       comment: "signify public key",
       algorithm,
-      keyNumber,
+      id,
       content: keyPair.publicKey,
     }),
   };

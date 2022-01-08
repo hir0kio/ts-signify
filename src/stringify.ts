@@ -21,7 +21,7 @@ export function stringifyPrivateKey(input: PrivateKey) {
       num2buf(privateKey.kdfRounds, 4),
       privateKey.salt,
       privateKey.checksum,
-      privateKey.keyNumber,
+      privateKey.id,
       privateKey.content,
     ]).toString("base64")
   );
@@ -31,7 +31,7 @@ export function stringifyPublicKey(input: PublicKey) {
   return stringify<PublicKey>(input, (publicKey) =>
     Buffer.concat([
       Buffer.from(publicKey.algorithm),
-      publicKey.keyNumber,
+      publicKey.id,
       publicKey.content,
     ]).toString("base64")
   );
@@ -41,7 +41,7 @@ export function stringifySignature(input: Signature) {
   return stringify<Signature>(input, (signature) =>
     Buffer.concat([
       Buffer.from(signature.algorithm),
-      signature.keyNumber,
+      signature.id,
       signature.content,
     ]).toString("base64")
   );

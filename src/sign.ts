@@ -17,7 +17,7 @@ export function sign(options: SigningOptions) {
     ? stringifySignature({
         comment: options.comment.toString(),
         algorithm: "Ed",
-        keyNumber: privateKey.keyNumber,
+        id: privateKey.id,
         content: Sign(
           Buffer.from(options.message),
           decryptPrivateKey({

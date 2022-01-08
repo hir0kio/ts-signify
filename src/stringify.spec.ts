@@ -14,7 +14,7 @@ describe("stringifyPrivateKey()", () => {
       kdfRounds: 42,
       salt: Buffer.alloc(16, "d"),
       checksum: Buffer.alloc(8, "e"),
-      keyNumber: Buffer.alloc(8, "f"),
+      id: Buffer.alloc(8, "f"),
       content: Buffer.alloc(64, "g"),
     });
 
@@ -40,7 +40,7 @@ describe("stringifyPublicKey()", () => {
     let stringified = stringifyPublicKey({
       comment: "[mock comment]",
       algorithm: "Ed",
-      keyNumber: Buffer.alloc(8, "b"),
+      id: Buffer.alloc(8, "b"),
       content: Buffer.alloc(32, "c"),
     });
 
@@ -58,7 +58,7 @@ describe("stringifySignature()", () => {
     let stringified = stringifySignature({
       comment: "[mock comment]",
       algorithm: "Ed",
-      keyNumber: Buffer.alloc(8, "b"),
+      id: Buffer.alloc(8, "b"),
       content: Buffer.alloc(64, "c"),
     });
 

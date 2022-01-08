@@ -28,7 +28,7 @@ export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
       kdfRounds: buf2num(content.subarray(4, 8)),
       salt: content.subarray(8, 24),
       checksum: content.subarray(24, 32),
-      keyNumber: content.subarray(32, 40),
+      id: content.subarray(32, 40),
       content: content.subarray(40, 104),
     };
 
@@ -41,7 +41,7 @@ export function parsePublicKey(input: Buffer | string): PublicKey | null {
     let publicKey = {
       comment,
       algorithm: content.subarray(0, 2).toString(),
-      keyNumber: content.subarray(2, 10),
+      id: content.subarray(2, 10),
       content: content.subarray(10, 42),
     };
 
@@ -54,7 +54,7 @@ export function parseSignature(input: Buffer | string): Signature | null {
     let signature = {
       comment,
       algorithm: content.subarray(0, 2).toString(),
-      keyNumber: content.subarray(2, 10),
+      id: content.subarray(2, 10),
       content: content.subarray(10, 74),
     };
 
