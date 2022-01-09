@@ -1,9 +1,9 @@
 # node-signify
 
 node-signify is a Node.js port of OpenBSD's
-[signify(1)](https://man.openbsd.org/signify) written in TypeScript. It
-provides various APIs for manipulating signify keys and signatures which allow
-it to be integrated to other Node.js packages.
+[signify(1)](https://man.openbsd.org/signify) written in TypeScript. It provides
+various APIs for manipulating signify keys and signatures which allow it to be
+integrated to other Node.js packages.
 
 ## Install
 
