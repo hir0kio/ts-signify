@@ -54,7 +54,7 @@ export function parseSignature(input: Buffer | string): Signature | null {
     let signature = {
       comment,
       algorithm: content.subarray(0, 2).toString(),
-      id: content.subarray(2, 10),
+      keyId: content.subarray(2, 10),
       content: content.subarray(10, 74),
     };
 

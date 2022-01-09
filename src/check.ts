@@ -25,7 +25,7 @@ export function checkSignature(signature: Signature | null) {
   return (
     signature &&
     signature.algorithm.length === 2 &&
-    signature.id.length === 8 &&
+    signature.keyId.length === 8 &&
     signature.content.length === 64
   );
 }

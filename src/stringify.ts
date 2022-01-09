@@ -41,7 +41,7 @@ export function stringifySignature(input: Signature) {
   return stringify<Signature>(input, (signature) =>
     Buffer.concat([
       Buffer.from(signature.algorithm),
-      signature.id,
+      signature.keyId,
       signature.content,
     ]).toString("base64")
   );

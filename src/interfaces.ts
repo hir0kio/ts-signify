@@ -24,6 +24,6 @@ export interface PublicKey {
 export interface Signature {
   comment: string;
   algorithm: string;
-  id: Buffer;
+  keyId: Buffer;
   content: Buffer;
 }

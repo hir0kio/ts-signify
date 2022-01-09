@@ -58,7 +58,7 @@ describe("stringifySignature()", () => {
     let stringified = stringifySignature({
       comment: "[mock comment]",
       algorithm: "Ed",
-      id: Buffer.alloc(8, "b"),
+      keyId: Buffer.alloc(8, "b"),
       content: Buffer.alloc(64, "c"),
     });
 
