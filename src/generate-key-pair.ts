@@ -34,7 +34,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
 
   return {
     privateKey: stringifyPrivateKey({
-      comment: "signify private key",
+      comment: "signify secret key",
       algorithm,
       kdfAlgorithm,
       kdfRounds: kdfRounds,

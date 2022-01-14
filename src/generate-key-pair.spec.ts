@@ -10,7 +10,7 @@ describe("generateKeyPair()", () => {
 
     expect(checkPrivateKey(privateKey)).toBe(true);
     expect(checkPublicKey(publicKey)).toBe(true);
-    expect(privateKey!.comment).toBe("signify private key");
+    expect(privateKey!.comment).toBe("signify secret key");
     expect(publicKey!.comment).toBe("signify public key");
   });
 });
