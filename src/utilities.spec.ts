@@ -1,13 +1,17 @@
-import { buf2num, num2buf } from "./utilities";
+import { getNumberFromBuffer, getBufferFromNumber } from "./utilities";
 
-describe("buf2num()", () => {
+describe("getNumberFromBuffer()", () => {
   it("returns correct number", () => {
-    expect(buf2num(Buffer.from([0x0, 0x0, 0x4, 0xd2]))).toEqual(1234);
+    expect(getNumberFromBuffer(Buffer.from([0x0, 0x0, 0x4, 0xd2]))).toEqual(
+      0x4d2
+    );
   });
 });
 
-describe("num2buf()", () => {
+describe("getBufferFromNumber()", () => {
   it("returns correct Buffer", () => {
-    expect(num2buf(1234, 4)).toEqual(Buffer.from([0x0, 0x0, 0x4, 0xd2]));
+    expect(getBufferFromNumber(0x4d2, 4)).toEqual(
+      Buffer.from([0x0, 0x0, 0x4, 0xd2])
+    );
   });
 });

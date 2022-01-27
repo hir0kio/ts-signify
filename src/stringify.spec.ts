@@ -3,7 +3,7 @@ import {
   stringifyPublicKey,
   stringifySignature,
 } from "./stringify";
-import { num2buf } from "./utilities";
+import { getBufferFromNumber } from "./utilities";
 
 describe("stringifyPrivateKey()", () => {
   it("returns string with valid format", () => {
@@ -24,7 +24,7 @@ describe("stringifyPrivateKey()", () => {
         Buffer.from(
           "Ed" +
             "BK" +
-            num2buf(42, 4).toString() +
+            getBufferFromNumber(42, 4).toString() +
             "d".repeat(16) +
             "e".repeat(8) +
             "f".repeat(8) +

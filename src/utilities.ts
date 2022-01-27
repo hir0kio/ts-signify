@@ -1,4 +1,4 @@
-export function buf2num(buf: Buffer) {
+export function getNumberFromBuffer(buf: Buffer) {
   let num = 0;
 
   for (let i = 0; i < buf.length; i++) {
@@ -8,7 +8,7 @@ export function buf2num(buf: Buffer) {
   return num;
 }
 
-export function num2buf(num: number, size: number) {
+export function getBufferFromNumber(num: number, size: number) {
   let buf = Buffer.alloc(size);
 
   for (let i = 0; i < size; i++) {

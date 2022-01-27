@@ -1,5 +1,5 @@
 import { PrivateKey, PublicKey, Signature } from "./interfaces";
-import { num2buf } from "./utilities";
+import { getBufferFromNumber } from "./utilities";
 
 function stringify<T extends PrivateKey | PublicKey | Signature>(
   input: T,
@@ -18,7 +18,7 @@ export function stringifyPrivateKey(input: PrivateKey) {
     Buffer.concat([
       Buffer.from(privateKey.algorithm),
       Buffer.from(privateKey.kdfAlgorithm),
-      num2buf(privateKey.kdfRounds, 4),
+      getBufferFromNumber(privateKey.kdfRounds, 4),
       privateKey.salt,
       privateKey.checksum,
       privateKey.id,
