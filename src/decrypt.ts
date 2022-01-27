@@ -3,13 +3,13 @@ import { assert } from "console";
 import { createHash } from "crypto";
 import { PrivateKey } from "./interfaces";
 
-export interface DecryptPrivateKeyOptions {
+export interface PrivateKeyDecryptionOptions {
   privateKey: PrivateKey;
   passphrase?: string;
 }
 
 export function decryptPrivateKey(
-  options: DecryptPrivateKeyOptions
+  options: PrivateKeyDecryptionOptions
 ): Buffer | null {
   assert(options.privateKey.algorithm === "Ed");
   assert(options.privateKey.kdfAlgorithm === "BK");
