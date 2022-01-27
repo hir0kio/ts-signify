@@ -1,5 +1,5 @@
 import { checkPrivateKey, checkPublicKey } from "./check";
-import { generateKeyPair } from "./generate-key-pair";
+import { generateKeyPair } from "./generate";
 import { parsePrivateKey, parsePublicKey } from "./parse";
 
 describe("generateKeyPair()", () => {

@@ -1,3 +1,3 @@
-export * from "./generate-key-pair";
+export * from "./generate";
 export * from "./sign";
 export * from "./verify";
