@@ -1,4 +1,4 @@
-import { getNumberFromBuffer, getBufferFromNumber } from "./utilities";
+import { getNumberFromBuffer, getBufferFromNumber } from "../src/utilities";
 
 describe("getNumberFromBuffer()", () => {
   it("returns correct number", () => {

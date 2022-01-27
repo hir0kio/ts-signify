@@ -2,8 +2,8 @@ import {
   stringifyPrivateKey,
   stringifyPublicKey,
   stringifySignature,
-} from "./stringify";
-import { getBufferFromNumber } from "./utilities";
+} from "../src/stringify";
+import { getBufferFromNumber } from "../src/utilities";
 
 describe("stringifyPrivateKey()", () => {
   it("returns string with valid format", () => {

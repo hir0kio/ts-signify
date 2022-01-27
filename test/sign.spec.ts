@@ -1,4 +1,4 @@
-import { sign } from "./sign";
+import { sign } from "../src/sign";
 
 const mockMessage = "[mock message]" + "\n",
   mockPassphrase = "passphrase",

@@ -1,5 +1,5 @@
-import { checkPrivateKey, checkPublicKey, checkSignature } from "./check";
-import { parsePublicKey, parsePrivateKey, parseSignature } from "./parse";
+import { checkPrivateKey, checkPublicKey, checkSignature } from "../src/check";
+import { parsePublicKey, parsePrivateKey, parseSignature } from "../src/parse";
 
 const mockPrivateKey =
     "untrusted comment: signify secret key" +

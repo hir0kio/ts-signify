@@ -1,6 +1,6 @@
-import { checkPrivateKey, checkPublicKey } from "./check";
-import { generateKeyPair } from "./generate";
-import { parsePrivateKey, parsePublicKey } from "./parse";
+import { checkPrivateKey, checkPublicKey } from "../src/check";
+import { generateKeyPair } from "../src/generate";
+import { parsePrivateKey, parsePublicKey } from "../src/parse";
 
 describe("generateKeyPair()", () => {
   it("returns valid KeyPair object", () => {
