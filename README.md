@@ -5,12 +5,6 @@ node-signify is a Node.js port of OpenBSD's
 various APIs for manipulating signify keys and signatures which allow it to be
 integrated to other Node.js packages.
 
-## Install
-
-```
-$ npm install node-signify
-```
-
 ## Usage
 
 ### Generate a key pair
