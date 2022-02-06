@@ -16,7 +16,7 @@ let verified = verify({
 });
 
 console.log(
-  `node-signify: ${
+  `ts-signify: ${
     verified ? "Signature verified" : "Signature verification failed"
   }`
 );

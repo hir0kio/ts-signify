@@ -1,6 +1,6 @@
-# node-signify
+# ts-signify
 
-node-signify is a TypeScript implementation of OpenBSD's
+ts-signify is a TypeScript implementation of OpenBSD's
 [signify(1)](https://man.openbsd.org/signify). It provides API for generating a
 key pair, signing a message with as well as verifying a signature.
 
@@ -14,7 +14,7 @@ Full example code is available under the [`/test`](/test) directory.
 ### Generate a key pair
 
 ```ts
-import { generateKeyPair } from "node-signify";
+import { generateKeyPair } from "ts-signify";
 
 let keyPair = generateKeyPair({
   passphrase: "passphrase", // optional
@@ -24,7 +24,7 @@ let keyPair = generateKeyPair({
 ### Sign a message
 
 ```ts
-import { sign } from "node-signify";
+import { sign } from "ts-signify";
 
 let signature = sign({
   comment: "verify with mock-key.pub",
@@ -37,7 +37,7 @@ let signature = sign({
 ### Verify a signature
 
 ```ts
-import { verify } from "node-signify";
+import { verify } from "ts-signify";
 
 let verified = verify({
   message: "[mock message]" + "\n",
