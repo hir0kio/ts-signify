@@ -1,6 +1,6 @@
 export interface KeyPair {
-  publicKey: Buffer | string;
-  privateKey: Buffer | string;
+  publicKey: Uint8Array | string;
+  privateKey: Uint8Array | string;
 }
 
 export interface PrivateKey {
@@ -8,22 +8,22 @@ export interface PrivateKey {
   algorithm: string;
   kdfAlgorithm: string;
   kdfRounds: number;
-  salt: Buffer;
-  checksum: Buffer;
-  id: Buffer;
-  content: Buffer;
+  salt: Uint8Array;
+  checksum: Uint8Array;
+  id: Uint8Array;
+  content: Uint8Array;
 }
 
 export interface PublicKey {
   comment: string;
   algorithm: string;
-  id: Buffer;
-  content: Buffer;
+  id: Uint8Array;
+  content: Uint8Array;
 }
 
 export interface Signature {
   comment: string;
   algorithm: string;
-  keyId: Buffer;
-  content: Buffer;
+  keyId: Uint8Array;
+  content: Uint8Array;
 }

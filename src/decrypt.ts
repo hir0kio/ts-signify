@@ -1,6 +1,5 @@
 import { pbkdf } from "bcrypt-pbkdf";
-import { assert } from "console";
-import { createHash } from "crypto";
+import * as nacl from "tweetnacl";
 import { PrivateKey } from "./interfaces";
 
 export interface PrivateKeyDecryptionOptions {
@@ -11,9 +10,6 @@ export interface PrivateKeyDecryptionOptions {
 export function decryptPrivateKey(
   options: PrivateKeyDecryptionOptions
 ): Buffer | null {
-  assert(options.privateKey.algorithm === "Ed");
-  assert(options.privateKey.kdfAlgorithm === "BK");
-
   let derivedKey = Buffer.alloc(64);
 
   if (options.passphrase) {
@@ -37,7 +33,7 @@ export function decryptPrivateKey(
   if (
     Buffer.compare(
       options.privateKey.checksum,
-      createHash("sha512").update(decryptedKey).digest().subarray(0, 8)
+      nacl.hash(decryptedKey).subarray(0, 8)
     ) !== 0
   ) {
     return null; // incorrect passphrase

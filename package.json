@@ -41,6 +41,6 @@
   },
   "dependencies": {
     "bcrypt-pbkdf": "^1.0.2",
-    "ed25519": "^0.0.5"
+    "tweetnacl": "^1.0.3"
   }
 }

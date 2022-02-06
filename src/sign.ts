@@ -1,4 +1,4 @@
-import { Sign } from "ed25519";
+import * as nacl from "tweetnacl";
 import { decryptPrivateKey } from "./decrypt";
 import { parsePrivateKey } from "./parse";
 import { stringifySignature } from "./stringify";
@@ -18,7 +18,7 @@ export function sign(options: SigningOptions) {
         comment: options.comment.toString(),
         algorithm: "Ed",
         keyId: privateKey.id,
-        content: Sign(
+        content: nacl.sign.detached(
           Buffer.from(options.message),
           decryptPrivateKey({
             privateKey,

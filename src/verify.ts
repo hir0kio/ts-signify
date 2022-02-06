@@ -1,4 +1,4 @@
-import { Verify } from "ed25519";
+import * as nacl from "tweetnacl";
 import { parsePublicKey, parseSignature } from "./parse";
 
 export interface VerificationOptions {
@@ -11,7 +11,7 @@ export function verify(options: VerificationOptions) {
   let publicKey = parsePublicKey(options.publicKey),
     signature = parseSignature(options.signature);
 
-  return Verify(
+  return nacl.sign.detached.verify(
     Buffer.from(options.message),
     signature!.content,
     publicKey!.content

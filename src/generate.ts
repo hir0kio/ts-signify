@@ -1,6 +1,5 @@
 import { pbkdf } from "bcrypt-pbkdf";
-import { randomBytes, createHash } from "crypto";
-import { MakeKeypair } from "ed25519";
+import * as nacl from "tweetnacl";
 import { KeyPair } from "./interfaces";
 import { stringifyPrivateKey, stringifyPublicKey } from "./stringify";
 
@@ -15,9 +14,9 @@ export interface KeyPairGenerationOptions {
 export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
   options = options ?? {};
 
-  let id = randomBytes(8),
-    keyPair = MakeKeypair(randomBytes(32)),
-    salt = randomBytes(16),
+  let id = nacl.randomBytes(8),
+    keyPair = nacl.sign.keyPair(),
+    salt = nacl.randomBytes(16),
     derivedPrivateKey = Buffer.alloc(64);
 
   if (options.passphrase) {
@@ -39,14 +38,11 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
       kdfAlgorithm,
       kdfRounds: kdfRounds,
       salt,
-      checksum: createHash("sha512")
-        .update(keyPair.privateKey)
-        .digest()
-        .subarray(0, 8),
+      checksum: nacl.hash(keyPair.secretKey).subarray(0, 8),
       id,
       content: Buffer.from(
         Buffer.alloc(64).map(
-          (value, index) => derivedPrivateKey[index] ^ keyPair.privateKey[index]
+          (value, index) => derivedPrivateKey[index] ^ keyPair.secretKey[index]
         )
       ),
     }),

@@ -3,7 +3,7 @@ import { PrivateKey, PublicKey, Signature } from "./interfaces";
 import { getNumberFromBuffer } from "./utilities";
 
 function parse<T extends PrivateKey | PublicKey | Signature>(
-  input: Buffer | string,
+  input: Uint8Array | string,
   parseContent: (comment: string, content: Buffer) => T | null
 ): T | null {
   try {
@@ -19,7 +19,7 @@ function parse<T extends PrivateKey | PublicKey | Signature>(
   }
 }
 
-export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
+export function parsePrivateKey(input: Uint8Array | string): PrivateKey | null {
   return parse<PrivateKey>(input, (comment, content) => {
     let privateKey = {
       comment,
@@ -36,7 +36,7 @@ export function parsePrivateKey(input: Buffer | string): PrivateKey | null {
   });
 }
 
-export function parsePublicKey(input: Buffer | string): PublicKey | null {
+export function parsePublicKey(input: Uint8Array | string): PublicKey | null {
   return parse(input, (comment, content) => {
     let publicKey = {
       comment,
