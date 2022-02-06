@@ -1,9 +1,8 @@
 # node-signify
 
-node-signify is a Node.js port of OpenBSD's
-[signify(1)](https://man.openbsd.org/signify) written in TypeScript. It provides
-API for generating a key pair, signing a message with as well as verifying a
-signature.
+node-signify is a TypeScript implementation of OpenBSD's
+[signify(1)](https://man.openbsd.org/signify). It provides API for generating a
+key pair, signing a message with as well as verifying a signature.
 
 This module has no dependency on Node.js built-in modules and doesn't require a
 polyfill to run in a browser.
