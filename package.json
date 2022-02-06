@@ -1,6 +1,6 @@
 {
   "name": "ts-signify",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "TypeScript implementation of OpenBSD's signify(1)",
   "main": "dist",
   "scripts": {
