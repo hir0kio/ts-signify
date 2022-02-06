@@ -1,4 +1,5 @@
 import { pbkdf } from "bcrypt-pbkdf";
+import { Buffer } from "buffer";
 import * as nacl from "tweetnacl";
 import { KeyPair } from "./interfaces";
 import { stringifyPrivateKey, stringifyPublicKey } from "./stringify";

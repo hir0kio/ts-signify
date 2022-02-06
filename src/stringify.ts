@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import { PrivateKey, PublicKey, Signature } from "./interfaces";
 import { getBufferFromNumber } from "./utilities";
 

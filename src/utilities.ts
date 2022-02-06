@@ -1,3 +1,5 @@
+import { Buffer } from "buffer";
+
 export function getNumberFromBuffer(buf: Buffer) {
   let num = 0;
 

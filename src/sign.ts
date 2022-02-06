@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import * as nacl from "tweetnacl";
 import { decryptPrivateKey } from "./decrypt";
 import { parsePrivateKey } from "./parse";
