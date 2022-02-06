@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/okada-h/ts-signify#readme",
   "devDependencies": {
-    "@types/ed25519": "^0.0.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.6",
     "commitizen": "^4.2.4",
