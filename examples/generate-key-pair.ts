@@ -4,5 +4,5 @@ let keyPair = generateKeyPair({
   passphrase: "passphrase",
 });
 
-console.log(keyPair.privateKey);
 console.log(keyPair.publicKey);
+console.log(keyPair.secretKey);

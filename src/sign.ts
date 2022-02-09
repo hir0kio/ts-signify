@@ -1,28 +1,28 @@
 import { Buffer } from "buffer";
 import * as nacl from "tweetnacl";
-import { decryptPrivateKey } from "./decrypt";
-import { parsePrivateKey } from "./parse";
+import { decryptSecretKey } from "./decrypt";
+import { parseSecretKey } from "./parse";
 import { stringifySignature } from "./stringify";
 
 export interface SigningOptions {
-  privateKey: Buffer | string;
+  secretKey: Buffer | string;
   passphrase: Buffer | string;
   message: Buffer | string;
   comment: Buffer | string;
 }
 
 export function sign(options: SigningOptions) {
-  let privateKey = parsePrivateKey(options.privateKey);
+  let secretKey = parseSecretKey(options.secretKey);
 
-  return privateKey
+  return secretKey
     ? stringifySignature({
         comment: options.comment.toString(),
         algorithm: "Ed",
-        keyId: privateKey.id,
+        keyId: secretKey.id,
         content: nacl.sign.detached(
           Buffer.from(options.message),
-          decryptPrivateKey({
-            privateKey,
+          decryptSecretKey({
+            secretKey,
             passphrase: options.passphrase.toString(),
           })!
         ),

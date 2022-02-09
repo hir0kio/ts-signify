@@ -1,13 +1,31 @@
 import {
-  stringifyPrivateKey,
   stringifyPublicKey,
+  stringifySecretKey,
   stringifySignature,
 } from "../src/stringify";
 import { getBufferFromNumber } from "../src/utilities";
 
-describe("stringifyPrivateKey()", () => {
+describe("stringifyPublicKey()", () => {
   it("returns string with valid format", () => {
-    let stringified = stringifyPrivateKey({
+    let stringified = stringifyPublicKey({
+      comment: "[mock comment]",
+      algorithm: "Ed",
+      id: Buffer.alloc(8, "b"),
+      content: Buffer.alloc(32, "c"),
+    });
+
+    expect(stringified).toBe(
+      "untrusted comment: [mock comment]" +
+        "\n" +
+        Buffer.from("Ed" + "b".repeat(8) + "c".repeat(32)).toString("base64") +
+        "\n"
+    );
+  });
+});
+
+describe("stringifySecretKey()", () => {
+  it("returns string with valid format", () => {
+    let stringified = stringifySecretKey({
       comment: "[mock comment]",
       algorithm: "Ed",
       kdfAlgorithm: "BK",
@@ -30,24 +48,6 @@ describe("stringifyPrivateKey()", () => {
             "f".repeat(8) +
             "g".repeat(64)
         ).toString("base64") +
-        "\n"
-    );
-  });
-});
-
-describe("stringifyPublicKey()", () => {
-  it("returns string with valid format", () => {
-    let stringified = stringifyPublicKey({
-      comment: "[mock comment]",
-      algorithm: "Ed",
-      id: Buffer.alloc(8, "b"),
-      content: Buffer.alloc(32, "c"),
-    });
-
-    expect(stringified).toBe(
-      "untrusted comment: [mock comment]" +
-        "\n" +
-        Buffer.from("Ed" + "b".repeat(8) + "c".repeat(32)).toString("base64") +
         "\n"
     );
   });

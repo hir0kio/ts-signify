@@ -18,7 +18,7 @@ import { generateKeyPair } from "ts-signify";
 
 let keyPair = generateKeyPair({
   passphrase: "passphrase", // optional
-}); // => { privateKey: "...", publicKey: "..." }
+}); // => { publicKey: "...", secretKey: "..." }
 ```
 
 ### Sign a message
@@ -30,7 +30,7 @@ let signature = sign({
   comment: "verify with mock-key.pub",
   message: "[mock message]" + "\n",
   passphrase: "passphrase",
-  privateKey: "...",
+  secretKey: "...",
 }); // => "untrusted comment: ..."
 ```
 
@@ -50,12 +50,12 @@ let verified = verify({
 
 ### generateKeyPair({ passphrase? }): KeyPair
 
-Generates a key pair. Returns a `KeyPair` object that has `privateKey` and
-`publicKey` members.
+Generates a key pair. Returns a `KeyPair` object that has `publicKey` and
+`secretKey` members.
 
-### sign({ comment, message, passphrase, privateKey }): string
+### sign({ comment, message, passphrase, secretKey }): string
 
-Signs the message using the private key and returns a signature.
+Signs the message using the secret key and returns a signature.
 
 ### verify({ message, publicKey, signature }): boolean
 

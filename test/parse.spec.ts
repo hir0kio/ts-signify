@@ -1,17 +1,17 @@
-import { checkPrivateKey, checkPublicKey, checkSignature } from "../src/check";
-import { parsePublicKey, parsePrivateKey, parseSignature } from "../src/parse";
+import { checkPublicKey, checkSecretKey, checkSignature } from "../src/check";
+import { parsePublicKey, parseSecretKey, parseSignature } from "../src/parse";
 
-const mockPrivateKey =
+const mockPublicKey =
+    "untrusted comment: signify public key" +
+    "\n" +
+    "RWRYneRdupGjVQSVGSpr1Om9B6d1XYIaz0SpP/qUQhCv1q2prRgKXNCY" +
+    "\n",
+  mockSecretKey =
     "untrusted comment: signify secret key" +
     "\n" +
     "RWRCSwAAACqJ7f6/CH4FzXB6RaJukrszI6KSOAMlKOpYneRdupGjVdodIBB5HFJ+" +
     "3oAby9p+8olmK90Ltjyb7VTgvwU7eCqdCqYGBizi4EqGY3uj5n723F4bYhYcAjSx" +
     "yy7KLRVbwLE=" +
-    "\n",
-  mockPublicKey =
-    "untrusted comment: signify public key" +
-    "\n" +
-    "RWRYneRdupGjVQSVGSpr1Om9B6d1XYIaz0SpP/qUQhCv1q2prRgKXNCY" +
     "\n",
   mockSignature =
     "untrusted comment: verify with mock-key.pub" +
@@ -34,17 +34,17 @@ describe("parsePublicKey()", () => {
   });
 });
 
-describe("parsePrivateKey()", () => {
-  it("returns valid PrivateKey object", () => {
-    let privateKey = parsePrivateKey(mockPrivateKey);
+describe("parseSecretKey()", () => {
+  it("returns valid SecretKey object", () => {
+    let secretKey = parseSecretKey(mockSecretKey);
 
-    expect(checkPrivateKey(privateKey)).toBe(true);
+    expect(checkSecretKey(secretKey)).toBe(true);
   });
 
   it("returns null if non-base64 input is given", () => {
-    let privateKey = parsePrivateKey("[non-base64 input]" + "\n");
+    let secretKey = parseSecretKey("[non-base64 input]" + "\n");
 
-    expect(privateKey).toBeNull();
+    expect(secretKey).toBeNull();
   });
 });
 

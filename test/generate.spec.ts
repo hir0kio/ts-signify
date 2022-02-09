@@ -1,16 +1,16 @@
-import { checkPrivateKey, checkPublicKey } from "../src/check";
+import { checkPublicKey, checkSecretKey } from "../src/check";
 import { generateKeyPair } from "../src/generate";
-import { parsePrivateKey, parsePublicKey } from "../src/parse";
+import { parsePublicKey, parseSecretKey } from "../src/parse";
 
 describe("generateKeyPair()", () => {
   it("returns valid KeyPair object", () => {
     let keyPair = generateKeyPair(),
-      privateKey = parsePrivateKey(keyPair.privateKey),
-      publicKey = parsePublicKey(keyPair.publicKey);
+      publicKey = parsePublicKey(keyPair.publicKey),
+      secretKey = parseSecretKey(keyPair.secretKey);
 
-    expect(checkPrivateKey(privateKey)).toBe(true);
     expect(checkPublicKey(publicKey)).toBe(true);
-    expect(privateKey!.comment).toBe("signify secret key");
+    expect(checkSecretKey(secretKey)).toBe(true);
     expect(publicKey!.comment).toBe("signify public key");
+    expect(secretKey!.comment).toBe("signify secret key");
   });
 });

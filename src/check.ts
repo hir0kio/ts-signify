@@ -1,16 +1,4 @@
-import { PrivateKey, PublicKey, Signature } from "./interfaces";
-
-export function checkPrivateKey(privateKey: PrivateKey | null) {
-  return (
-    privateKey &&
-    privateKey.algorithm.length === 2 &&
-    privateKey.kdfAlgorithm.length === 2 &&
-    privateKey.salt.length === 16 &&
-    privateKey.checksum.length === 8 &&
-    privateKey.id.length === 8 &&
-    privateKey.content.length === 64
-  );
-}
+import { PublicKey, SecretKey, Signature } from "./interfaces";
 
 export function checkPublicKey(publicKey: PublicKey | null) {
   return (
@@ -18,6 +6,18 @@ export function checkPublicKey(publicKey: PublicKey | null) {
     publicKey.algorithm.length === 2 &&
     publicKey.id.length === 8 &&
     publicKey.content.length === 32
+  );
+}
+
+export function checkSecretKey(secretKey: SecretKey | null) {
+  return (
+    secretKey &&
+    secretKey.algorithm.length === 2 &&
+    secretKey.kdfAlgorithm.length === 2 &&
+    secretKey.salt.length === 16 &&
+    secretKey.checksum.length === 8 &&
+    secretKey.id.length === 8 &&
+    secretKey.content.length === 64
   );
 }
 

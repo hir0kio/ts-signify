@@ -2,7 +2,7 @@ import { pbkdf } from "bcrypt-pbkdf";
 import { Buffer } from "buffer";
 import * as nacl from "tweetnacl";
 import { KeyPair } from "./interfaces";
-import { stringifyPrivateKey, stringifyPublicKey } from "./stringify";
+import { stringifyPublicKey, stringifySecretKey } from "./stringify";
 
 const algorithm = "Ed",
   kdfAlgorithm = "BK",
@@ -18,7 +18,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
   let id = nacl.randomBytes(8),
     keyPair = nacl.sign.keyPair(),
     salt = nacl.randomBytes(16),
-    derivedPrivateKey = Buffer.alloc(64);
+    derivedSecretKey = Buffer.alloc(64);
 
   if (options.passphrase) {
     pbkdf(
@@ -26,14 +26,20 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
       Buffer.from(options.passphrase).length,
       salt,
       salt.length,
-      derivedPrivateKey,
-      derivedPrivateKey.length,
+      derivedSecretKey,
+      derivedSecretKey.length,
       kdfRounds
     );
   }
 
   return {
-    privateKey: stringifyPrivateKey({
+    publicKey: stringifyPublicKey({
+      comment: "signify public key",
+      algorithm,
+      id,
+      content: keyPair.publicKey,
+    }),
+    secretKey: stringifySecretKey({
       comment: "signify secret key",
       algorithm,
       kdfAlgorithm,
@@ -43,15 +49,9 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
       id,
       content: Buffer.from(
         Buffer.alloc(64).map(
-          (value, index) => derivedPrivateKey[index] ^ keyPair.secretKey[index]
+          (value, index) => derivedSecretKey[index] ^ keyPair.secretKey[index]
         )
       ),
-    }),
-    publicKey: stringifyPublicKey({
-      comment: "signify public key",
-      algorithm,
-      id,
-      content: keyPair.publicKey,
     }),
   };
 }

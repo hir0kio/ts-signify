@@ -1,15 +1,15 @@
 import { pbkdf } from "bcrypt-pbkdf";
 import { Buffer } from "buffer";
 import * as nacl from "tweetnacl";
-import { PrivateKey } from "./interfaces";
+import { SecretKey } from "./interfaces";
 
-export interface PrivateKeyDecryptionOptions {
-  privateKey: PrivateKey;
+export interface SecretKeyDecryptionOptions {
+  secretKey: SecretKey;
   passphrase?: string;
 }
 
-export function decryptPrivateKey(
-  options: PrivateKeyDecryptionOptions
+export function decryptSecretKey(
+  options: SecretKeyDecryptionOptions
 ): Buffer | null {
   let derivedKey = Buffer.alloc(64);
 
@@ -17,23 +17,23 @@ export function decryptPrivateKey(
     pbkdf(
       Buffer.from(options.passphrase),
       Buffer.from(options.passphrase).length,
-      options.privateKey.salt,
-      options.privateKey.salt.length,
+      options.secretKey.salt,
+      options.secretKey.salt.length,
       derivedKey,
       derivedKey.length,
-      options.privateKey.kdfRounds
+      options.secretKey.kdfRounds
     );
   }
 
   let decryptedKey = Buffer.from(
     Buffer.alloc(64).map(
-      (value, index) => options.privateKey.content[index] ^ derivedKey[index]
+      (value, index) => options.secretKey.content[index] ^ derivedKey[index]
     )
   );
 
   if (
     Buffer.compare(
-      options.privateKey.checksum,
+      options.secretKey.checksum,
       nacl.hash(decryptedKey).subarray(0, 8)
     ) !== 0
   ) {

@@ -2,7 +2,7 @@ import { sign } from "../src/sign";
 
 const mockMessage = "[mock message]" + "\n",
   mockPassphrase = "passphrase",
-  mockPrivateKey =
+  mockSecretKey =
     "untrusted comment: signify secret key" +
     "\n" +
     "RWRCSwAAACqJ7f6/CH4FzXB6RaJukrszI6KSOAMlKOpYneRdupGjVdodIBB5HFJ+" +
@@ -19,7 +19,7 @@ const mockMessage = "[mock message]" + "\n",
 describe("sign()", () => {
   it("returns valid signature", async () => {
     let signature = sign({
-      privateKey: mockPrivateKey,
+      secretKey: mockSecretKey,
       message: mockMessage,
       passphrase: mockPassphrase,
       comment: "verify with mock-key.pub",

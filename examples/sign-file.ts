@@ -5,14 +5,14 @@ import { sign } from "../src";
 
 (async () => {
   let signature = sign({
-    privateKey: await promisify(readFile)(
-      resolve(process.cwd(), "mocks", "mock-key.sec")
-    ),
+    comment: "verify with mock-key.pub",
     message: await promisify(readFile)(
       resolve(process.cwd(), "mocks", "mock-message")
     ),
     passphrase: "passphrase",
-    comment: "verify with mock-key.pub",
+    secretKey: await promisify(readFile)(
+      resolve(process.cwd(), "mocks", "mock-key.sec")
+    ),
   });
 
   console.log(signature);
