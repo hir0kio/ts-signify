@@ -7,6 +7,15 @@ key pair, signing a message with as well as verifying a signature.
 This module has no dependency on Node.js built-in modules and doesn't require a
 polyfill to run in a browser.
 
+## Build
+
+```
+$ npm install -g pnpm
+$ pnpm install
+$ pnpm test
+$ pnpm build
+```
+
 ## Usage
 
 Full example code is available under the [`/test`](/test) directory.
