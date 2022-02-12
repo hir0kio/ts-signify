@@ -74,8 +74,8 @@ succeeded and `false` if it failed.
 ## Contributions
 
 Contributions are welcome. Submit a pull request on GitHub or
-[send a patch](https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_project_over_email)
-to hirokio@tutanota.com.
+[send a patch](https://git-scm.com/docs/git-format-patch) to
+hirokio@tutanota.com.
 
 ## License
 
