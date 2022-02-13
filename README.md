@@ -9,11 +9,11 @@ polyfill to run in a browser.
 
 ## Build
 
-```
-$ npm install -g pnpm
-$ pnpm install
-$ pnpm test
-$ pnpm build
+```sh
+npm install -g pnpm
+pnpm install
+pnpm test
+pnpm build
 ```
 
 ## Usage
