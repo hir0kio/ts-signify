@@ -43,7 +43,7 @@ export function generateKeyPair(options?: KeyPairGenerationOptions): KeyPair {
       comment: "signify secret key",
       algorithm,
       kdfAlgorithm,
-      kdfRounds: kdfRounds,
+      kdfRounds,
       salt,
       checksum: nacl.hash(keyPair.secretKey).subarray(0, 8),
       id,
