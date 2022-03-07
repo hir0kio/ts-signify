@@ -6,7 +6,7 @@ import { stringifySignature } from "./stringify";
 
 export interface SigningOptions {
   secretKey: Buffer | string;
-  passphrase: Buffer | string;
+  passphrase: string;
   message: Buffer | string;
   comment: Buffer | string;
 }
@@ -23,7 +23,7 @@ export function sign(options: SigningOptions) {
           Buffer.from(options.message),
           decryptSecretKey({
             secretKey,
-            passphrase: options.passphrase.toString(),
+            passphrase: options.passphrase,
           })!
         ),
       })
