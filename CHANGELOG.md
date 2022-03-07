@@ -1,13 +1,13 @@
 ## 0.4.0 (February 9, 2022)
 
-- Replace all instances of "private key" with "secret key"
+- Replace all instances of "private key" with "secret key".
 
 ## 0.3.2 (February 7, 2022)
 
-- Rename the project to ts-signify
-- Remove usage of Node.js built-in modules
+- Rename the project to ts-signify.
+- Remove usage of Node.js built-in modules.
 - Rename the `DecryptPrivateKeyOptions` interface to
-  `PrivateKeyDecryptionOptions`
+  `PrivateKeyDecryptionOptions`.
 
 ## 0.3.1 (January 14, 2022)
 
