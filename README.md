@@ -86,7 +86,7 @@ be in plaintext.
 
 - comment `<Buffer>` | `<string>` The comment section of the signature.
 - message `<Buffer>` | `<string>` The message to be signed.
-- secretKey `<Buffer>` | `<string>` The secret key to sign the message.
+- secretKey `<Buffer>` | `<string>` The secret key to sign the message with.
 - passphrase `<string>` The passphrase to retrieve the secret key with.
 - Returns: `<string>` | `<null>` A signature.
 
