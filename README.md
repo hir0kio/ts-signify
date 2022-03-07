@@ -1,81 +1,111 @@
 # ts-signify
 
 ts-signify is a TypeScript implementation of OpenBSD's
-[signify(1)](https://man.openbsd.org/signify). It provides API for generating a
-key pair, signing a message with as well as verifying a signature.
+[signify(1)](https://man.openbsd.org/signify).
 
-This module has no dependency on Node.js built-in modules and doesn't require a
-polyfill to run in a browser.
+## Dependencies
 
-## Build
+- Node.js 16.14.0
+- npm 8.3.1
+- pnpm
+- NPM modules
+  - [base64-js](https://www.npmjs.com/package/base64-js)
+  - [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf)
+  - [buffer](https://www.npmjs.com/package/buffer)
+  - [ieee754](https://www.npmjs.com/package/ieee754)
+  - [tweetnacl](https://www.npmjs.com/package/tweetnacl)
 
-```sh
-npm install -g pnpm
-pnpm install
-pnpm test
-pnpm build
-```
+## Installation
+
+    git clone https://github.com/okada-h/ts-signify
+    cd ts-signify
+    npm install -g pnpm
+    pnpm install
+
+## Building
+
+    pnpm build
+
+## Testing
+
+    pnpm test
 
 ## Usage
 
 Full example code is available under the [`/test`](/test) directory.
 
-### Generate a key pair
+### Key pair generation
 
 ```ts
 import { generateKeyPair } from "ts-signify";
 
 let keyPair = generateKeyPair({
-  passphrase: "passphrase", // optional
-}); // => { publicKey: "...", secretKey: "..." }
+  passphrase: "passphrase",
+});
+
+console.log(keyPair.publicKey);
+console.log(keyPair.secretKey);
 ```
 
-### Sign a message
+### Signing
 
 ```ts
 import { sign } from "ts-signify";
 
 let signature = sign({
   comment: "verify with mock-key.pub",
-  message: "[mock message]" + "\n",
+  message: "...",
   passphrase: "passphrase",
   secretKey: "...",
-}); // => "untrusted comment: ..."
+});
 ```
 
-### Verify a signature
+### Signature verification
 
 ```ts
 import { verify } from "ts-signify";
 
 let verified = verify({
-  message: "[mock message]" + "\n",
+  message: "...",
   publicKey: "...",
   signature: "...",
-}); // => boolean
+});
 ```
 
 ## API
 
-### generateKeyPair({ passphrase? }): KeyPair
+### `generateKeyPair({[ passphrase ]})`
 
-Generates a key pair. Returns a `KeyPair` object that has `publicKey` and
-`secretKey` members.
+- passphrase `<string>` The passphrase to protect the secret key with.
+- Returns: `<KeyPair>` A key pair.
 
-### sign({ comment, message, passphrase, secretKey }): string
+Generates a key pair. If `passphrase` is not given, the produced secret key will
+be in plaintext.
 
-Signs the message using the secret key and returns a signature.
+### `sign({ comment, message, secretKey[, passphrase]})`
 
-### verify({ message, publicKey, signature }): boolean
+- comment `<Buffer>` | `<string>` The comment section of the signature.
+- message `<Buffer>` | `<string>` The message to be signed.
+- secretKey `<Buffer>` | `<string>` The secret key to sign the message.
+- passphrase `<string>` The passphrase to retrieve the secret key with.
+- Returns: `<string>` | `<null>` A signature.
 
-Verifies the signature for the message and returns `true` if verification
-succeeded and `false` if it failed.
+Signs the message with the given secret key. Returns `null` if incorrect
+passphrase is given.
 
-## Contributions
+### `verify({ message, publicKey, signature })`
 
-Contributions are welcome. Submit a pull request on GitHub or
-[send a patch](https://git-scm.com/docs/git-format-patch) to
-hirokio@tutanota.com.
+- message `<Buffer>` | `<string>` The message to be verified.
+- publicKey `<Buffer>` | `<string>` The public key that was used to sign the
+  message.
+- signature `<Buffer>` | `<string>` The signature to be verified.
+- Returns: `<boolean>`
+
+Verifies the signature with the corresponding public key.
+
+## Author
+
+- Hiroki Okada <hirokio@tutanota.com>
 
 ## License
 
