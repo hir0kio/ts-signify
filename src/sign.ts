@@ -6,7 +6,7 @@ import { stringifySignature } from "./stringify";
 
 export interface SigningOptions {
   secretKey: Buffer | string;
-  passphrase: string;
+  passphrase?: string;
   message: Buffer | string;
   comment: Buffer | string;
 }
