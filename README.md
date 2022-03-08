@@ -136,7 +136,7 @@ Added in: v0.5.0
 - data `<Uint8Array>` The data to be signed.
 - secretKey `<UnencryptedSecretKey>` The secret key to sign the data with.
 - comment `<string>` The "untrusted comment" section of the signature.
-  **_Default: `""`_**
+  **Default: `""`**
 - Returns: `<Signature>` A signature.
 
 Signs the data with the given secret key.
