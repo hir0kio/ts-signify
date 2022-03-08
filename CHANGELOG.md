@@ -1,3 +1,7 @@
+## 0.5.0 (March 8, 2022)
+
+- The public API has been rewritten from scratch with a new design.
+
 ## 0.4.0 (February 9, 2022)
 
 - Replace all instances of "private key" with "secret key".
