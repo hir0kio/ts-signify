@@ -1,22 +1,22 @@
-import { verify } from "../src";
+import { PublicKey, Signature, verify } from "../src/main";
 
-let verified = verify({
-  signature:
-    "untrusted comment: verify with mock-key.pub" +
-    "\n" +
-    "RWRYneRdupGjVdv0VsY/ChV0ouN1Nkkb0aJjPmikdatNl9LR93po7F9E8Aq/8xCw" +
-    "Ek8yrq2ym8yuY97qQnF1rPpSd/F1bvzTIQI=" +
-    "\n",
-  message: "[mock invalid message]" + "\n",
-  publicKey:
-    "untrusted comment: signify public key" +
-    "\n" +
-    "RWRYneRdupGjVQSVGSpr1Om9B6d1XYIaz0SpP/qUQhCv1q2prRgKXNCY" +
-    "\n",
-});
+// The data to be verified.
+let data = Buffer.from("modified data");
 
-console.log(
-  `ts-signify: ${
-    verified ? "Signature verified" : "Signature verification failed"
-  }`
+// The signature to be verified.
+let signature = Signature.import(
+  "untrusted comment: verify with mock-key.pub\n" +
+    "RWRYneRdupGjVbLERw56AG1AEuaQsNQaa3cp2tS+2y/GUyt0W/FVYkyGDovVFFDHlVFSWhpHGC6XVTYGUD9HDy6qwGx2NQ//FwY=\n"
 );
+
+// The public key that corresponds to the signature.
+let publicKey = PublicKey.import(
+  "untrusted comment: signify public key\n" +
+    "RWRYneRdupGjVQSVGSpr1Om9B6d1XYIaz0SpP/qUQhCv1q2prRgKXNCY\n"
+);
+
+// Verify.
+let verified = verify(data, signature, publicKey);
+
+// Show the result.
+console.log(verified ? "Signature verified" : "Signature verification failed");

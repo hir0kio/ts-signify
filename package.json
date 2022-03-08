@@ -2,9 +2,9 @@
   "name": "ts-signify",
   "version": "0.4.0",
   "description": "TypeScript implementation of OpenBSD's signify(1)",
-  "main": "dist",
+  "main": "dist/main.js",
   "scripts": {
-    "build": "bash scripts/build.sh",
+    "build": "tsc",
     "commit": "cz",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -36,8 +36,8 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
+    "base64-js": "^1.5.1",
     "bcrypt-pbkdf": "^1.0.2",
-    "buffer": "^6.0.3",
     "tweetnacl": "^1.0.3"
   }
 }

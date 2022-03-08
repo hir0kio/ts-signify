@@ -11,8 +11,6 @@ ts-signify is a TypeScript implementation of OpenBSD's
 - NPM modules
   - [base64-js](https://www.npmjs.com/package/base64-js)
   - [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf)
-  - [buffer](https://www.npmjs.com/package/buffer)
-  - [ieee754](https://www.npmjs.com/package/ieee754)
   - [tweetnacl](https://www.npmjs.com/package/tweetnacl)
 
 ## Installation
@@ -30,78 +28,129 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
     pnpm test
 
-## Usage
-
-Full example code is available under the [`/test`](/test) directory.
-
-### Key pair generation
-
-```ts
-import { generateKeyPair } from "ts-signify";
-
-let keyPair = generateKeyPair({
-  passphrase: "passphrase",
-});
-
-console.log(keyPair.publicKey);
-console.log(keyPair.secretKey);
-```
-
-### Signing
-
-```ts
-import { sign } from "ts-signify";
-
-let signature = sign({
-  comment: "verify with mock-key.pub",
-  message: "...",
-  passphrase: "passphrase",
-  secretKey: "...",
-});
-```
-
-### Signature verification
-
-```ts
-import { verify } from "ts-signify";
-
-let verified = verify({
-  message: "...",
-  publicKey: "...",
-  signature: "...",
-});
-```
-
 ## API
 
-### `generateKeyPair({[ passphrase ]})`
+### Class: `KeyPair`
+
+Added in: v0.5.0
+
+#### Static method: `KeyPair.import(pubKeyStr, secKeyStr)`
+
+Added in: v0.5.0
+
+- pubKeyStr `<string>` The `string` representation of a public key.
+- secKeyStr `<string>` The `string` representation of a secret key.
+- Returns: `<KeyPair>` A key pair.
+
+Imports a key pair.
+
+#### Static method: `KeyPair.generate(passphrase)`
+
+Added in: v0.5.0
 
 - passphrase `<string>` The passphrase to protect the secret key with.
 - Returns: `<KeyPair>` A key pair.
 
-Generates a key pair. If `passphrase` is not given, the produced secret key will
-be in plaintext.
+Generates a key pair.
 
-### `sign({ comment, message, secretKey[, passphrase]})`
+### Class: `PublicKey`
 
-- comment `<Buffer>` | `<string>` The comment section of the signature.
-- message `<Buffer>` | `<string>` The message to be signed.
-- secretKey `<Buffer>` | `<string>` The secret key to sign the message with.
-- passphrase `<string>` The passphrase to retrieve the secret key with.
-- Returns: `<string>` | `<null>` A signature.
+Added in: v0.5.0
 
-Signs the message with the given secret key. Returns `null` if incorrect
-passphrase is given.
+#### Static method: `PublicKey.import(pubKeyStr)`
 
-### `verify({ message, publicKey, signature })`
+Added in: v0.5.0
 
-- message `<Buffer>` | `<string>` The message to be verified.
-- publicKey `<Buffer>` | `<string>` The public key that was used to sign the
-  message.
-- signature `<Buffer>` | `<string>` The signature to be verified.
-- Returns: `<boolean>`
+- pubKeyStr `<string>` The `string` representation of a public key.
+- Returns: `<string>` A public key.
 
-Verifies the signature with the corresponding public key.
+Imports a public key.
+
+#### `keyPair.export()`
+
+Added in: v0.5.0
+
+- Returns: `<string>` The `string` representation of the public key.
+
+Exports the public key.
+
+### Class: `SecretKey`
+
+Added in: v0.5.0
+
+#### Static method: `KeyPair.import(secKeyStr)`
+
+Added in: v0.5.0
+
+- secKeyStr `<string>` The `string` representation of a secret key.
+- Returns: `<string>` A secret key.
+
+Imports a secret key.
+
+#### `keyPair.export()`
+
+Added in: v0.5.0
+
+- Returns: `<string>` The `string` representation of the secret key.
+
+Exports the secret key.
+
+#### `keyPair.decrypt()`
+
+Added in: v0.5.0
+
+- passphrase `<string>` The passphrase to decrypt the key with.
+- Returns: `<UnencryptedSecretKey>` An unencrypted secret key.
+
+Decrypts the secret key. Returns `null` if incorrect passphrase is given.
+
+### Class: `UnencryptedSecretKey`
+
+Added in: v0.5.0
+
+- Extends: `<SecretKey>`
+
+### Class: `Signature`
+
+Added in: v0.5.0
+
+#### Static method: `Signature.import(sigStr)`
+
+- sigStr `<string>` The `string` representation of a signature.
+- Returns: `<Signature>` A signature.
+
+Imports a signature.
+
+#### `signature.export()`
+
+Added in: v0.5.0
+
+- Returns: `<string>` The `string` representation of the signature.
+
+Exports the signature.
+
+### `sign(data, secretkey[, comment])`
+
+Added in: v0.5.0
+
+- data `<Uint8Array>` The data to be signed.
+- secretKey `<UnencryptedSecretKey>` The secret key to sign the data with.
+- comment `<string>` The "untrusted comment" section of the signature.
+  **_Default: `""`_**
+- Returns: `<Signature>` A signature.
+
+Signs the data with the given secret key.
+
+### `verify(data, signature, publicKey)`
+
+Added in: v0.5.0
+
+- data `<Uint8Array>` The signed data.
+- signature `<Signature>` The signature to be verified.
+- publicKey `<PublicKey>` The public key that corresponds to the signature.
+- Returns: `<boolean>` The verification result.
+
+Verifies the data with the given public key.
 
 ## Author
 
