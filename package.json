@@ -21,7 +21,7 @@
     "openbsd",
     "signify"
   ],
-  "author": "Hiroki Okada <hirokio@tutanota.com> (https://github.com/okada-h)",
+  "author": "Hiroki Okada <hirokio@tutanota.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/okada-h/ts-signify/issues"
