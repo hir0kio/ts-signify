@@ -288,17 +288,15 @@ export class SecretKey {
   decrypt(passphrase: string) {
     let derivedKey = new Uint8Array(64);
 
-    if (passphrase) {
-      pbkdf(
-        stringToByteArray(passphrase),
-        stringToByteArray(passphrase).length,
-        this.salt,
-        this.salt.length,
-        derivedKey,
-        derivedKey.length,
-        this.kdfRounds
-      );
-    }
+    pbkdf(
+      stringToByteArray(passphrase),
+      stringToByteArray(passphrase).length,
+      this.salt,
+      this.salt.length,
+      derivedKey,
+      derivedKey.length,
+      this.kdfRounds
+    );
 
     let decryptedKey = new Uint8Array(64).map(
       (value, index) => this.content[index] ^ derivedKey[index]
