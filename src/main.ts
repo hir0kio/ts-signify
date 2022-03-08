@@ -128,7 +128,7 @@ export class PublicKey {
    * @since v0.5.0
    */
   static import(pubKeyStr: string) {
-    let split = pubKeyStr.toString().split("\n", 2);
+    let split = pubKeyStr.split("\n", 2);
     let comment = split[0].match(/^untrusted comment: (.*?)$/)![1];
     let body = base64.toByteArray(split[1]);
     let algorithm = byteArrayToString(body.subarray(0, 2));
@@ -230,7 +230,7 @@ export class SecretKey {
    * @since v0.5.0
    */
   static import(secKeyStr: string) {
-    let split = secKeyStr.toString().split("\n", 2);
+    let split = secKeyStr.split("\n", 2);
     let comment = split[0].match(/^untrusted comment: (.*?)$/)![1];
     let body = base64.toByteArray(split[1]);
     let algorithm = byteArrayToString(body.subarray(0, 2));
@@ -379,7 +379,7 @@ export class Signature {
    * @since v0.5.0
    */
   static import(sigStr: string) {
-    let split = sigStr.toString().split("\n", 2);
+    let split = sigStr.split("\n", 2);
     let comment = split[0].match(/^untrusted comment: (.*?)$/)![1];
     let body = base64.toByteArray(split[1]);
     let algorithm = byteArrayToString(body.subarray(0, 2));
