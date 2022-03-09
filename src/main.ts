@@ -146,13 +146,13 @@ export class PublicKey {
    */
   export() {
     return (
-      `untrusted comment: ${this._comment}` +
+      `untrusted comment: ${this.comment}` +
       "\n" +
       base64.fromByteArray(
         concatByteArrays(
-          stringToByteArray(this._algorithm),
-          this._id,
-          this._content
+          stringToByteArray(this.algorithm),
+          this.id,
+          this.content
         )
       ) +
       "\n"
@@ -261,17 +261,17 @@ export class SecretKey {
    */
   export() {
     return (
-      `untrusted comment: ${this._comment}` +
+      `untrusted comment: ${this.comment}` +
       "\n" +
       base64.fromByteArray(
         concatByteArrays(
-          stringToByteArray(this._algorithm),
-          stringToByteArray(this._kdfAlgorithm),
-          numberToByteArray(this._kdfRounds, 4),
-          this._salt,
-          this._checksum,
-          this._id,
-          this._content
+          stringToByteArray(this.algorithm),
+          stringToByteArray(this.kdfAlgorithm),
+          numberToByteArray(this.kdfRounds, 4),
+          this.salt,
+          this.checksum,
+          this.id,
+          this.content
         )
       ) +
       "\n"
@@ -413,13 +413,13 @@ export class Signature {
    */
   export() {
     return (
-      `untrusted comment: ${this._comment}` +
+      `untrusted comment: ${this.comment}` +
       "\n" +
       base64.fromByteArray(
         concatByteArrays(
-          stringToByteArray(this._algorithm),
-          this._keyId,
-          this._content
+          stringToByteArray(this.algorithm),
+          this.keyId,
+          this.content
         )
       ) +
       "\n"
