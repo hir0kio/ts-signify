@@ -449,7 +449,7 @@ export function sign(
 }
 
 /**
- * Verifies the data with the given public key.
+ * Verifies the signature with the given public key.
  *
  * @param data The signed data.
  * @param signature The signature to be verified.

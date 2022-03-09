@@ -150,7 +150,7 @@ Added in: v0.5.0
 - publicKey `<PublicKey>` The public key that corresponds to the signature.
 - Returns: `<boolean>` The verification result.
 
-Verifies the data with the given public key.
+Verifies the signature with the given public key.
 
 ## Author
 
