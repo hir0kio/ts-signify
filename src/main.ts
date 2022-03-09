@@ -79,7 +79,7 @@ export class KeyPair {
         nacl.hash(keyPair.secretKey).subarray(0, 8),
         id,
         new Uint8Array(64).map(
-          (value, index) => derivedSecretKey[index] ^ keyPair.secretKey[index]
+          (_value, index) => derivedSecretKey[index] ^ keyPair.secretKey[index]
         )
       )
     );
@@ -299,7 +299,7 @@ export class SecretKey {
     );
 
     let decryptedKey = new Uint8Array(64).map(
-      (value, index) => this.content[index] ^ derivedKey[index]
+      (_value, index) => this.content[index] ^ derivedKey[index]
     );
 
     if (compareArrays(this.checksum, nacl.hash(decryptedKey).subarray(0, 8))) {
