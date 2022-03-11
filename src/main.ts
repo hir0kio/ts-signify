@@ -87,7 +87,7 @@ export class KeyPair {
 }
 
 export class PublicKey {
-  protected _comment: string;
+  comment: string;
   protected _algorithm: string;
   protected _id: Uint8Array;
   protected _content: Uint8Array;
@@ -98,14 +98,10 @@ export class PublicKey {
     id: Uint8Array,
     content: Uint8Array
   ) {
-    this._comment = comment;
+    this.comment = comment;
     this._algorithm = algorithm;
     this._id = id;
     this._content = content;
-  }
-
-  get comment() {
-    return this._comment;
   }
 
   get algorithm() {
@@ -161,7 +157,7 @@ export class PublicKey {
 }
 
 export class SecretKey {
-  protected _comment: string;
+  comment: string;
   protected _algorithm: string;
   protected _kdfAlgorithm: string;
   protected _kdfRounds: number;
@@ -180,7 +176,7 @@ export class SecretKey {
     id: Uint8Array,
     content: Uint8Array
   ) {
-    this._comment = comment;
+    this.comment = comment;
     this._algorithm = algorithm;
     this._kdfAlgorithm = kdfAlgorithm;
     this._kdfRounds = kdfRounds;
@@ -188,10 +184,6 @@ export class SecretKey {
     this._checksum = checksum;
     this._id = id;
     this._content = content;
-  }
-
-  get comment() {
-    return this._comment;
   }
 
   get algorithm() {
@@ -354,7 +346,7 @@ export class UnencryptedSecretKey extends SecretKey {
 }
 
 export class Signature {
-  protected _comment: string;
+  comment: string;
   protected _algorithm: string;
   protected _keyId: Uint8Array;
   protected _content: Uint8Array;
@@ -365,10 +357,22 @@ export class Signature {
     keyId: Uint8Array,
     content: Uint8Array
   ) {
-    this._comment = comment;
+    this.comment = comment;
     this._algorithm = algorithm;
     this._keyId = keyId;
     this._content = content;
+  }
+
+  get algorithm() {
+    return this._algorithm;
+  }
+
+  get keyId() {
+    return this._keyId;
+  }
+
+  get content() {
+    return this._content;
   }
 
   /**
@@ -387,22 +391,6 @@ export class Signature {
     let content = body.subarray(10, 74);
 
     return new Signature(comment, algorithm, keyId, content);
-  }
-
-  get comment() {
-    return this._comment;
-  }
-
-  get algorithm() {
-    return this._algorithm;
-  }
-
-  get keyId() {
-    return this._keyId;
-  }
-
-  get content() {
-    return this._content;
   }
 
   /**
