@@ -5,7 +5,6 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
-    "commit": "cz",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
