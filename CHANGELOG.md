@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Allow comment to be changed after creation.
+
 ## 0.5.0
 
 - The public API has been rewritten from scratch with a new design.
