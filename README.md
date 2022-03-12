@@ -129,7 +129,7 @@ Added in: v0.5.0
 
 Exports the signature.
 
-### `sign(data, secretkey[, comment])`
+### `sign(data, secretKey[, comment])`
 
 Added in: v0.5.0
 
