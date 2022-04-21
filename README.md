@@ -15,7 +15,7 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
 ## Installation
 
-    git clone https://github.com/okada-h/ts-signify
+    git clone https://github.com/hir0kio/ts-signify
     cd ts-signify
     npm install -g pnpm
     pnpm install

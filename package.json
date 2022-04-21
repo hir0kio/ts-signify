@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/okada-h/ts-signify.git"
+    "url": "git+https://github.com/hir0kio/ts-signify.git"
   },
   "keywords": [
     "cryptography",
@@ -21,9 +21,9 @@
   "author": "Hiroki Okada <hirokio@tutanota.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/okada-h/ts-signify/issues"
+    "url": "https://github.com/hir0kio/ts-signify/issues"
   },
-  "homepage": "https://github.com/okada-h/ts-signify#readme",
+  "homepage": "https://github.com/hir0kio/ts-signify#readme",
   "dependencies": {
     "base64-js": "^1.5.1",
     "bcrypt-pbkdf": "^1.0.2",
