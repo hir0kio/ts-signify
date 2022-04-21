@@ -95,7 +95,7 @@ Added in: v0.5.0
 
 Exports the secret key.
 
-#### `keyPair.decrypt()`
+#### `keyPair.decrypt(passphrase)`
 
 Added in: v0.5.0
 
