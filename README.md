@@ -32,11 +32,7 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
 ### Class: `KeyPair`
 
-Added in: v0.5.0
-
 #### Static method: `KeyPair.import(pubKeyStr, secKeyStr)`
-
-Added in: v0.5.0
 
 - pubKeyStr `<string>` The `string` representation of a public key.
 - secKeyStr `<string>` The `string` representation of a secret key.
@@ -46,8 +42,6 @@ Imports a key pair.
 
 #### Static method: `KeyPair.generate(passphrase)`
 
-Added in: v0.5.0
-
 - passphrase `<string>` The passphrase to protect the secret key with.
 - Returns: `<KeyPair>` A key pair.
 
@@ -55,11 +49,7 @@ Generates a key pair.
 
 ### Class: `PublicKey`
 
-Added in: v0.5.0
-
 #### Static method: `PublicKey.import(pubKeyStr)`
-
-Added in: v0.5.0
 
 - pubKeyStr `<string>` The `string` representation of a public key.
 - Returns: `<string>` A public key.
@@ -68,19 +58,13 @@ Imports a public key.
 
 #### `keyPair.export()`
 
-Added in: v0.5.0
-
 - Returns: `<string>` The `string` representation of the public key.
 
 Exports the public key.
 
 ### Class: `SecretKey`
 
-Added in: v0.5.0
-
 #### Static method: `KeyPair.import(secKeyStr)`
-
-Added in: v0.5.0
 
 - secKeyStr `<string>` The `string` representation of a secret key.
 - Returns: `<string>` A secret key.
@@ -89,15 +73,11 @@ Imports a secret key.
 
 #### `keyPair.export()`
 
-Added in: v0.5.0
-
 - Returns: `<string>` The `string` representation of the secret key.
 
 Exports the secret key.
 
 #### `keyPair.decrypt(passphrase)`
-
-Added in: v0.5.0
 
 - passphrase `<string>` The passphrase to decrypt the key with.
 - Returns: `<UnencryptedSecretKey>` An unencrypted secret key.
@@ -106,13 +86,9 @@ Decrypts the secret key. Returns `null` if incorrect passphrase is given.
 
 ### Class: `UnencryptedSecretKey`
 
-Added in: v0.5.0
-
 - Extends: `<SecretKey>`
 
 ### Class: `Signature`
-
-Added in: v0.5.0
 
 #### Static method: `Signature.import(sigStr)`
 
@@ -123,15 +99,11 @@ Imports a signature.
 
 #### `signature.export()`
 
-Added in: v0.5.0
-
 - Returns: `<string>` The `string` representation of the signature.
 
 Exports the signature.
 
 ### `sign(data, secretKey[, comment])`
-
-Added in: v0.5.0
 
 - data `<Uint8Array>` The data to be signed.
 - secretKey `<UnencryptedSecretKey>` The secret key to sign the data with.
@@ -142,8 +114,6 @@ Added in: v0.5.0
 Signs the data with the given secret key.
 
 ### `verify(data, signature, publicKey)`
-
-Added in: v0.5.0
 
 - data `<Uint8Array>` The signed data.
 - signature `<Signature>` The signature to be verified.
