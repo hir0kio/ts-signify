@@ -7,7 +7,7 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
 - Node.js 16.14.0
 - npm 8.3.1
-- pnpm
+- Yarn
 - NPM modules
   - [base64-js](https://www.npmjs.com/package/base64-js)
   - [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf)
@@ -17,16 +17,16 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
     git clone https://github.com/hir0kio/ts-signify
     cd ts-signify
-    npm install -g pnpm
-    pnpm install
+    npm install -g yarn
+    yarn install
 
 ## Building
 
-    pnpm build
+    yarn build
 
 ## Testing
 
-    pnpm test
+    yarn test
 
 ## API
 
