@@ -82,7 +82,7 @@ Exports the secret key.
 - passphrase `<string>` The passphrase to decrypt the key with.
 - Returns: `<UnencryptedSecretKey>` An unencrypted secret key.
 
-Decrypts the secret key. Returns `null` if incorrect passphrase is given.
+Decrypts the secret key. Returns `null` if an incorrect passphrase is given.
 
 ### Class: `UnencryptedSecretKey`
 
