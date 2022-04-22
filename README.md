@@ -5,8 +5,7 @@ ts-signify is a TypeScript implementation of OpenBSD's
 
 ## Dependencies
 
-- Node.js 16.14.0
-- npm 8.3.1
+- Node.js 16.x
 - Yarn
 - NPM modules
   - [base64-js](https://www.npmjs.com/package/base64-js)
