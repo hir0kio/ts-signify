@@ -425,13 +425,16 @@ export class Signature {
  * @since v0.5.0
  */
 export function sign(
-  data: Uint8Array,
+  data: string | Uint8Array,
   secretKey: UnencryptedSecretKey,
   comment: string = ""
 ) {
   let algorithm = presets.algorithm;
   let keyId = secretKey.id;
-  let content = nacl.sign.detached(data, secretKey.unencryptedContent);
+  let content = nacl.sign.detached(
+    typeof data === "string" ? stringToByteArray(data) : data,
+    secretKey.unencryptedContent
+  );
 
   return new Signature(comment, algorithm, keyId, content);
 }
@@ -446,11 +449,15 @@ export function sign(
  * @since v0.5.0
  */
 export function verify(
-  data: Uint8Array,
+  data: string | Uint8Array,
   signature: Signature,
   publicKey: PublicKey
 ) {
-  return nacl.sign.detached.verify(data, signature.content, publicKey.content);
+  return nacl.sign.detached.verify(
+    typeof data === "string" ? stringToByteArray(data) : data,
+    signature.content,
+    publicKey.content
+  );
 }
 
 function byteArrayToNumber(array: Uint8Array) {

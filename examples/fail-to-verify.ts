@@ -1,7 +1,7 @@
 import { PublicKey, Signature, verify } from "../src/main";
 
 // The data to be verified.
-let data = Buffer.from("modified data");
+let data = "modified data";
 
 // The signature to be verified.
 let signature = Signature.import(

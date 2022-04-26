@@ -90,7 +90,7 @@ Exports the signature.
 
 ### `sign(data, secretKey[, comment])`
 
-- data `<Uint8Array>` The data to be signed.
+- data `<string | Uint8Array>` The data to be signed.
 - secretKey `<UnencryptedSecretKey>` The secret key to sign the data with.
 - comment `<string>` The "untrusted comment" section of the signature.
   **Default: `""`**
@@ -100,7 +100,7 @@ Signs the data with the given secret key.
 
 ### `verify(data, signature, publicKey)`
 
-- data `<Uint8Array>` The signed data.
+- data `<string | Uint8Array>` The signed data.
 - signature `<Signature>` The signature to be verified.
 - publicKey `<PublicKey>` The public key that corresponds to the signature.
 - Returns: `<boolean>` The verification result.

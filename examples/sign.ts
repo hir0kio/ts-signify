@@ -7,7 +7,7 @@ let secretKey = SecretKey.import(
 ).decrypt("passphrase");
 
 // The data to be signed.
-let data = Buffer.from("data");
+let data = "data";
 
 // The "untrusted comment" section of the signature that we will create.
 let comment = "verify with key.pub";

@@ -168,7 +168,7 @@ describe("Class Signature", () => {
 describe("sign()", () => {
   it("returns a valid signature", () => {
     let signature = sign(
-      Buffer.from("data"),
+      "data",
       SecretKey.import(mockSecretKey).decrypt("passphrase")!,
       "verify with key.pub"
     );
@@ -180,7 +180,7 @@ describe("verify()", () => {
   it("returns true if a valid signature and the corresponding data are given", () => {
     expect(
       verify(
-        Buffer.from("data"),
+        "data",
         Signature.import(mockSignature),
         PublicKey.import(mockPublicKey)
       )
@@ -190,7 +190,7 @@ describe("verify()", () => {
   it("returns false if the given data has been modified", () => {
     expect(
       verify(
-        Buffer.from("modified data"),
+        "modified data",
         Signature.import(mockSignature),
         PublicKey.import(mockPublicKey)
       )
